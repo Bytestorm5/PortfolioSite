@@ -10,9 +10,9 @@ class BlogPost(models.Model):
     body_text_link = models.CharField(max_length=50000)
     #Tags
     project_id = models.ForeignKey("projects.Project", null=True, blank=True, on_delete=models.SET_NULL)
-    tag_1 = models.ForeignKey("projects.Tag", null=True, blank=True, on_delete=models.SET_NULL)
-    tag_2 = models.ForeignKey("projects.Tag", null=True, blank=True, on_delete=models.SET_NULL)
-    tag_3 = models.ForeignKey("projects.Tag", null=True, blank=True, on_delete=models.SET_NULL)     
+    tag_1 = models.ForeignKey("projects.Tag", null=True, blank=True, on_delete=models.SET_NULL, related_name="b_tag_1")
+    tag_2 = models.ForeignKey("projects.Tag", null=True, blank=True, on_delete=models.SET_NULL, related_name="b_tag_2")
+    tag_3 = models.ForeignKey("projects.Tag", null=True, blank=True, on_delete=models.SET_NULL, related_name="b_tag_3")
 
     def __str__(self):
         return f"{self.title_text} [{self.pub_date.date()}]"
