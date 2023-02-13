@@ -6,35 +6,61 @@
                 background-color: rgb(20, 20, 20);
                 margin: 0;
                 color:lightgray;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
             }
             #section-column {
                 display: flex;
                 flex-direction: column;
             }
             #header {
-                background-color: rgb(40, 40, 40);
-                display: flex;
-                flex-direction: row;
-                align-items: center;
+                background-color: rgb(40, 40, 40); 
+                align-items: center;               
                 gap: 10px;
+                margin-bottom: 10px;
             }
-            #headshot {
-                border-radius: 50%;
+            .headshot {
+                border-radius: 50%;                
+            }
+            #header .headshot {
                 width: 64px;
-                height: 64px;;
+                height: 64px;
                 margin: 4px;
+            }
+            #git-content-test .headshot {
+                width: 128px;
+                height: 128px;
+                margin: 16px;
+            }
+            .content-section {
+                display: flex;
+                flex-direction: row;                
             }
         </style>
         <!-- <script src="C:\Users\nfkam\Documents\GitHub\PortfolioSite\static\js\markdownUtil.js" type="text/javascript"></script>         -->
     </head>
     <body>
         <div id="section-column">
-            <div id="header">
+            <div id="header" class="content-section">
                 {% load static %}
-                <a href="/"><img src="{% static 'assets/headshot.png' %}" id="headshot"></a>
+                <a href="/"><img src="{% static 'assets/headshot.png' %}" class="headshot"></a>
                 <p>Test.</p>
             </div>
-            
+            <div id="git-content-test" class="content-section" style="justify-content: space-around;">
+                <div style="display: flex; flex-direction: row; align-items: center;">
+                    <img src="{% static 'assets/headshot.png' %}" class="headshot">
+                    <div>
+                        <h1>Kamil Arif</h1>
+                        <p style="max-width: 512px;">
+                            I am an aspiring ML developer currently studying Data Science at NJIT. I've worked on a multitude of projects, both profesionally and on my own time, which can be viewed <a href="/projects/">here</a>
+                        </p>
+                    </div>                    
+                </div>
+                <div style="display:flex; flex-direction: row; border: 2px solid white; border-radius: 15px; padding: 5px;">
+                    <img src="https://github-readme-stats.vercel.app/api?username=Bytestorm5&show_icons=true&theme=dark&hide_rank=true&count_private=true&custom_title=Github%20Stats%20%28Past%20Year%29&line_height=27&hide_border=true">
+                    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Bytestorm5&theme=dark&langs_count=3&hide_border=true">
+                </div>
+                
+            </div>
         </div>      
     </body>
 </html>
