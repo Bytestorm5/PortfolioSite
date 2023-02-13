@@ -4,4 +4,4 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 
 def index(request):
-    return HttpResponse("Index page!")
+    return render(request, "portfolio_site/base_section.html")
