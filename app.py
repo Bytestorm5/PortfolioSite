@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import platform
 
 app = Flask(__name__)
 
@@ -15,4 +16,7 @@ def contact():
     return render_template('contact.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    if platform.system() == 'Windows':
+        app.run(debug=True, port=5000)
+    else:
+        app.run(port=80)
