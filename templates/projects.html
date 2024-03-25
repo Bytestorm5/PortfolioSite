@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block site_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/projects.css')}}">
+{% endblock %}
+
+{% block title %}
+Kamil Arif | Projects
+{% endblock %}
+
+{% block body %}
+<h1>Projects</h1>
+<p>Click on a section to read more. Some projects will have demos soon™</p>
+<span class='section-head'><h3>Back2GPT</h3>&emsp;<b>May 2023</b>&emsp;<p>Completed | Python | LLMs, LangChain, Markprompt</p></span>
+<div class='collapsible'>
+    <p>
+        As part of my work as a Grader at NJIT, I was tasked with setting up a bot that could respond to students' questions on the official class discord, referring to the course material and some select sources.
+        This was still in the early days of  LLM use, but the pipeline would later come to be known as RAG; Retreival Augmented Generation.
+    </p>
+    <p>
+        What I needed to do was mine the course website's content from the Professor's repo, along with a healthy amount of Wikipedia articles, and put them all in a format that can be parsed in MarkPrompt.
+        From there I was able to implement a discord bot to allow users to chat with the LLM, and it was complete.
+        Setting up the bot wasn't as trivial as it sounds as I had to handle the stream data in a way that worked with Discord's API, and reformat the sources to make sense for the format.
+    </p>
+</div>
+
+<span class='section-head'><h3>GalaxyGen</h3>&emsp;<b>March 2023</b>&emsp;<p>Completed | Python, Javascript | Flask, OpenCV, NetworkX</p></span>
+<div class='collapsible'>
+    <p>
+        GalaxyGen is a tool I made to generate, visualize, and edit psuedo-random Galaxies for sci-fi settings, following the <a href="https://starwars.fandom.com/wiki/Hyperlane">Hyperlane</a> system from Star Wars.
+        GalaxyGen is set up to generate "natural" hyperlanes which will generally avoid having a homogenous pattern, allowing for interesting logistics & routing. It's also set up to generate "clusters" of resources given some parameters, which add another dimension to the geography of the Galaxy.        
+    </p>
+    <p>
+        This all is displayed in a locally-hosted Web App that allows users to view & edit the galaxy in real time. This includes visualizing or editing fictional countries plotted over the map, or the resource clusters.
+        Galaxies are generated with a script that takes a black & white density map from the user- everything else is generated for them.
+    </p>
+    <p>
+        I made this tool for a non-technical group, so this was my first foray into making something that's truly <em>user-friendly.</em> By all accounts I failed (I still get teased about it to this day) but I learned a lot in the process, and that's what matters.
+    </p>
+    <a href="https://github.com/Bytestorm5/GalaxyGen">GitHub Link</a>
+</div>
+
+<span class='section-head'><h3>Stingus Stats</h3>&emsp;<b>December 2022</b>&emsp;<p>Completed | Python | Flask, OAuth2, Heroku/DigitalOcean</p></span>
+<div class='collapsible'>
+    <p>
+        Stingus Stats was a data collection project centered on determining the drop rates of in-game items from Destiny 2 depending on game mode and other such factors.
+        It was a fully functional front and back end, where the back-end collected item drop events from anyone who signed up for it (far more complicated than it sounds), and the front-end collected that data into easy-to-understand stats.
+        The plan was to make some more advanced tools going from that, but the game started dying due to a very controversial update, and I lost interest.
+    </p>
+</div>
+
+<span class='section-head'><h3>Message Count +</h3>&emsp;<b>March 2020</b>&emsp;<p>Completed | C# | MongoDB, Discord.NET</p></span>
+<div class='collapsible'>
+    <p>
+        This is a project that is completely defunct but holds a lot of sentimental value to me as it's one of my first ventures into data collection and visualization. 
+    </p>
+    <p>
+        The overall task was simple enough- record how many messages are sent at any given moment in any given channel, and plot that data in useful ways.
+        The problem is that I wasn't particularly good at dealing with the various edge cases that comes with a constant stream of old, new, and inconsistently formatted data. I also had no idea how to generate graphs from code.
+        I also scope-creeped <em>hard</em> every time I tried to make it.
+    </p>
+    <p>
+        Overall I learned a lot of valuable lessons from this project. One of these days I'll get back to it and implement it properly.
+    </p>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var sectionHeads = document.querySelectorAll('.section-head');
+      sectionHeads.forEach(function(head) {
+        head.addEventListener('click', function() {
+          // Toggle 'active' class on clicked head
+          this.classList.toggle('active');
+  
+          // Get next sibling of clicked head and toggle it
+          var content = this.nextElementSibling;
+          if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+          }
+        });
+      });
+    });
+  </script>  
+{% endblock %}

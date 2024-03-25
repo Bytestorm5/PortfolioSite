@@ -1,0 +1,49 @@
+.row-section {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.row-section div {
+    padding: 5px;
+}
+.has-tooltip {
+    cursor: pointer;
+    color: rgb(172, 172, 172);
+    border-bottom: 1px dotted rgb(172, 172, 172);
+    transition: border-bottom 0.25s;
+}
+.has-tooltip:hover {
+    border-bottom: 1px dotted rgb(221, 221, 221);
+}
+
+.collapsible {
+    overflow: hidden;
+    transition: max-height 0.35s ease-out;
+    max-height: 0; /* Initial state is collapsed */
+}
+
+.section-head.active + .collapsible {
+    max-height: 100%; /* Arbitrary large height */
+}
+
+.section-head {
+    cursor: pointer; /* Makes it clear the section head is clickable */
+    position: relative;
+    border-bottom: 1px dotted white;
+    display: block;
+    margin-top: 10px;
+  }
+.section-head * {
+    display: inline;
+}
+  
+  .section-head::after {
+    content: '▼'; /* Arrow pointing downwards */
+    position: absolute;
+    right: 10px; /* Adjust as per your layout */
+  }
+  
+  .section-head.active::after {
+    content: '▲'; /* Arrow pointing upwards when active */
+  }
