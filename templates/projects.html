@@ -11,11 +11,33 @@ Kamil Arif | Projects
 {% block body %}
 <h1>Projects</h1>
 <p>Click on a section to read more. Some projects will have demos soon™</p>
-<span class='section-head'><h3>Back2GPT</h3>&emsp;<b>May 2023</b>&emsp;<p>Completed | Python | LLMs, LangChain, Markprompt</p></span>
+<span class='section-head' id='njitschedule'><h3>NJIT Schedule Builder</h3>&emsp;<b>January 2024</b>&emsp;<p>In-Progress | TypeScript | NextJS, Svelte</p></span>
+<div class='collapsible'>
+    <p>
+        The Schedule builder is a tool developed by students at NJIT to help with deciding what classes to take in upcoming semesters. 
+        The problem was that it wasn't always synchronized with NJIT's data, and it's search function was pretty simple- so I decided I'd see if I could do better.
+        As it would turn out, I wasn't the only one that was thinking about this- after talking to a couple people, we organized a team via NJIT's ACM branch to work on a complete revitalization of the Schedule Builder.
+    </p>
+    <p>
+        The main things we wanted to improve were:
+        <ul>
+            <li>The amount of information shown to the user (including a dev API!)</li>
+            <li>The look & feel of the site</li>
+            <li>Search filtering</li>
+            <li>Schedule Optimization tools</li>
+            <li>Plugin compatibility</li>
+        </ul>
+    </p>
+    <p>
+        This is still in progress, so results of this project are thus far unknown. Things are looking promising though! 
+        We've been coordinating with NJIT's IT department, and if we're able to bring this to completion, they're seemingly willing to replace the existing Schedule Builder! (after they run their suite of Cybersecurity tests on their end, of course)
+    </p>
+</div>
+<span class='section-head' id='back2gpt'><h3>Back2GPT</h3>&emsp;<b>May 2023</b>&emsp;<p>Completed | Python | LLMs, LangChain, Markprompt</p></span>
 <div class='collapsible'>
     <p>
         As part of my work as a Grader at NJIT, I was tasked with setting up a bot that could respond to students' questions on the official class discord, referring to the course material and some select sources.
-        This was still in the early days of  LLM use, but the pipeline would later come to be known as RAG; Retreival Augmented Generation.
+        This was still in the early days of LLMs being popular, but the pipeline would later come to be known as RAG; Retreival Augmented Generation.
     </p>
     <p>
         What I needed to do was mine the course website's content from the Professor's repo, along with a healthy amount of Wikipedia articles, and put them all in a format that can be parsed in MarkPrompt.
@@ -24,7 +46,7 @@ Kamil Arif | Projects
     </p>
 </div>
 
-<span class='section-head'><h3>GalaxyGen</h3>&emsp;<b>March 2023</b>&emsp;<p>Completed | Python, Javascript | Flask, OpenCV, NetworkX</p></span>
+<span class='section-head' id='galaxygen'><h3>GalaxyGen</h3>&emsp;<b>March 2023</b>&emsp;<p>Completed | Python, Javascript | Flask, OpenCV, NetworkX</p></span>
 <div class='collapsible'>
     <p>
         GalaxyGen is a tool I made to generate, visualize, and edit psuedo-random Galaxies for sci-fi settings, following the <a href="https://starwars.fandom.com/wiki/Hyperlane">Hyperlane</a> system from Star Wars.
@@ -40,16 +62,19 @@ Kamil Arif | Projects
     <a href="https://github.com/Bytestorm5/GalaxyGen">GitHub Link</a>
 </div>
 
-<span class='section-head'><h3>Stingus Stats</h3>&emsp;<b>December 2022</b>&emsp;<p>Completed | Python | Flask, OAuth2, Heroku/DigitalOcean</p></span>
+<span class='section-head' id='stingusstats'><h3>Stingus Stats</h3>&emsp;<b>December 2022</b>&emsp;<p>Completed | Python | Flask, OAuth2, Heroku/DigitalOcean</p></span>
 <div class='collapsible'>
     <p>
         Stingus Stats was a data collection project centered on determining the drop rates of in-game items from Destiny 2 depending on game mode and other such factors.
         It was a fully functional front and back end, where the back-end collected item drop events from anyone who signed up for it (far more complicated than it sounds), and the front-end collected that data into easy-to-understand stats.
         The plan was to make some more advanced tools going from that, but the game started dying due to a very controversial update, and I lost interest.
     </p>
+    <div style="display: flex; flex-direction: row; justify-content:center">
+        <iframe src="https://youtube.com/embed/zXvwjobgquo" width="500" height="281"></iframe>
+    </div>
 </div>
 
-<span class='section-head'><h3>Message Count +</h3>&emsp;<b>March 2020</b>&emsp;<p>Completed | C# | MongoDB, Discord.NET</p></span>
+<span class='section-head' id='messagecount'><h3>Message Count +</h3>&emsp;<b>March 2020</b>&emsp;<p>Completed | C# | MongoDB, Discord.NET</p></span>
 <div class='collapsible'>
     <p>
         This is a project that is completely defunct but holds a lot of sentimental value to me as it's one of my first ventures into data collection and visualization. 
@@ -66,6 +91,27 @@ Kamil Arif | Projects
 
 
 <script>
+    function mouseNotif(event, messageText) {
+        const message = document.createElement('div');
+        message.textContent = messageText;
+        message.className = 'mouse-notif';
+        
+        // Position the message at the cursor location
+        message.style.left = `${event.clientX}px`;
+        message.style.top = `${event.clientY}px`;
+
+        // Append the message to the body
+        document.body.appendChild(message);
+
+        // Set a timeout to fade out and remove the message
+        setTimeout(() => {
+            message.style.opacity = '0';
+            setTimeout(() => {
+                document.body.removeChild(message);
+            }, 500); // Matches the transition duration
+        }, 500); // Show for 1 second before fading out
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
       var sectionHeads = document.querySelectorAll('.section-head');
       sectionHeads.forEach(function(head) {
@@ -82,6 +128,22 @@ Kamil Arif | Projects
           }
         });
       });
+
+      const hash = window.location.hash;
+      if (hash) {
+        const elementId = hash.substring(1);
+        const selectedElement = document.getElementById(elementId);
+        if (selectedElement) {
+            const event = new MouseEvent("click", {
+                view: window,
+                bubbles: true,
+                cancelable: true
+            });
+            // Dispatch the click event on the element
+            selectedElement.dispatchEvent(event);
+        }
+      }
+      
     });
   </script>  
 {% endblock %}

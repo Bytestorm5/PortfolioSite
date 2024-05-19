@@ -25,5 +25,4 @@ jobs:
       run: |
         export SSHPASS=$SSH_PASSWORD
         sshpass -e ssh -o StrictHostKeyChecking=no -p $PORT $USERNAME@$HOST "mkdir -p $TARGET_DIRECTORY"
-        sshpass -e rsync -avz -e "ssh -o StrictHostKeyChecking=no -p $PORT" --exclude='.git/' --exclude='.github/' ./ $USERNAME@$HOST:$TARGET_DIRECTORY
-        sshpass -e ssh -o StrictHostKeyChecking=no -p $PORT $USERNAME@$HOST "cd $TARGET_DIRECTORY && ./restart_script.sh"
+        sshpass -e rsync -avz -e "ssh -o StrictHostKeyChecking=no -p $PORT" --exclude='.git/' --exclude='.github/' ./ $USERNAME@$HOST:$TARGET_DIRECTORY"
