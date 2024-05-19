@@ -1,0 +1,195 @@
+:root {
+    /* Elevation
+     * Adjust shadow colors for dark mode
+     */
+    --jp-shadow-base-lightness: 255;
+    --jp-shadow-umbra-color: rgba(
+      var(--jp-shadow-base-lightness),
+      var(--jp-shadow-base-lightness),
+      var(--jp-shadow-base-lightness),
+      0.2
+    );
+    --jp-shadow-penumbra-color: rgba(
+      var(--jp-shadow-base-lightness),
+      var(--jp-shadow-base-lightness),
+      var(--jp-shadow-base-lightness),
+      0.14
+    );
+    --jp-shadow-ambient-color: rgba(
+      var(--jp-shadow-base-lightness),
+      var(--jp-shadow-base-lightness),
+      var(--jp-shadow-base-lightness),
+      0.12
+    );
+  
+    /* Borders
+     * Adjust border colors for dark mode
+     */
+    --jp-border-color0: var(--md-grey-700);
+    --jp-border-color1: var(--md-grey-700);
+    --jp-border-color2: var(--md-grey-600);
+    --jp-border-color3: var(--md-grey-500);
+    --jp-inverse-border-color: var(--md-grey-300);
+  
+    /* UI Fonts
+     * Adjust font colors for dark mode
+     */
+    --jp-ui-font-color0: rgba(255, 255, 255, 1);
+    --jp-ui-font-color1: rgba(255, 255, 255, 0.87);
+    --jp-ui-font-color2: rgba(255, 255, 255, 0.54);
+    --jp-ui-font-color3: rgba(255, 255, 255, 0.38);
+  
+    --jp-ui-inverse-font-color0: rgba(0, 0, 0, 1);
+    --jp-ui-inverse-font-color1: rgba(0, 0, 0, 1);
+    --jp-ui-inverse-font-color2: rgba(0, 0, 0, 0.7);
+    --jp-ui-inverse-font-color3: rgba(0, 0, 0, 0.5);
+  
+    /* Content Fonts
+     * Adjust content font colors for dark mode
+     */
+    --jp-content-font-color0: rgba(255, 255, 255, 1);
+    --jp-content-font-color1: rgba(255, 255, 255, 0.87);
+    --jp-content-font-color2: rgba(255, 255, 255, 0.54);
+    --jp-content-font-color3: rgba(255, 255, 255, 0.38);
+    --jp-content-link-color: var(--md-blue-300);
+  
+    /* Layout
+     * Adjust layout colors for dark mode
+     */
+    --jp-layout-color0: rgb(46, 46, 46);
+    --jp-layout-color1: #383838;
+    --jp-layout-color2: var(--md-grey-800);
+    --jp-layout-color3: var(--md-grey-700);
+    --jp-layout-color4: var(--md-grey-600);
+  
+    /* Inverse Layout
+     * Adjust inverse layout colors for dark mode
+     */
+    --jp-inverse-layout-color0: white;
+    --jp-inverse-layout-color1: var(--md-grey-100);
+    --jp-inverse-layout-color2: var(--md-grey-200);
+    --jp-inverse-layout-color3: var(--md-grey-300);
+    --jp-inverse-layout-color4: var(--md-grey-400);
+  
+    /* Brand/accent colors remain the same */
+  
+    /* State colors (warn, error, success, info)
+     * Adjust state colors for dark mode
+     */
+    --jp-warn-color0: var(--md-orange-300);
+    --jp-warn-color1: var(--md-orange-500);
+    --jp-warn-color2: var(--md-orange-700);
+    --jp-warn-color3: var(--md-orange-900);
+    --jp-error-color0: var(--md-red-300);
+    --jp-error-color1: var(--md-red-500);
+    --jp-error-color2: var(--md-red-700);
+    --jp-error-color3: var(--md-red-900);
+    --jp-success-color0: var(--md-green-300);
+    --jp-success-color1: var(--md-green-500);
+    --jp-success-color2: var(--md-green-700);
+    --jp-success-color3: var(--md-green-900);
+    --jp-info-color0: var(--md-cyan-300);
+    --jp-info-color1: var(--md-cyan-500);
+    --jp-info-color2: var(--md-cyan-700);
+    --jp-info-color3: var(--md-cyan-900);
+  
+    /* Cell specific styles
+     * Adjust cell styles for dark mode
+     */
+    --jp-cell-editor-background: var(--md-grey-900);
+    --jp-cell-editor-border-color: var(--md-grey-700);
+    --jp-cell-editor-box-shadow: inset 0 0 2px var(--md-blue-700);
+    --jp-cell-editor-active-background: var(--jp-layout-color1);
+    --jp-cell-editor-active-border-color: var(--jp-brand-color1);
+    --jp-cell-prompt-not-active-font-color: var(--md-grey-300);
+  
+    /* Notebook specific styles
+     * Adjust notebook styles for dark mode
+     */
+    --jp-notebook-select-background: var(--jp-layout-color2);
+    --jp-notebook-multiselected-color: var(--md-blue-300);
+  
+    /* Rendermime styles
+     * Adjust rendermime styles for dark mode
+     */
+    --jp-rendermime-error-background: #311b1b;
+    --jp-rendermime-table-row-background: var(--md-grey-800);
+    --jp-rendermime-table-row-hover-background: var(--md-grey-700);
+  
+    /* Dialog specific styles
+     * Adjust dialog styles for dark mode
+     */
+    --jp-dialog-background: rgba(255, 255, 255, 0.25);
+  
+    /* Input field styles
+     * Adjust input field styles for dark mode
+     */
+    --jp-input-background: var(--md-grey-800);
+    --jp-input-border-color: var(--md-grey-600);
+    --jp-input-active-background: var(--md-grey-700);
+    --jp-input-hover-background: var(--md-grey-600);
+  
+    /* Code mirror specific styles
+     * Adjust code mirror styles for dark mode
+     */
+    --jp-mirror-editor-keyword-color: #80cbc4;
+    --jp-mirror-editor-atom-color: #ffcb6b;
+    --jp-mirror-editor-number-color: #f77669;
+    --jp-mirror-editor-def-color: #82aaff;
+    --jp-mirror-editor-variable-color: var(--md-grey-100);
+    --jp-mirror-editor-variable-2-color: #c792ea;
+    --jp-mirror-editor-variable-3-color: #7fdbca;
+    --jp-mirror-editor-punctuation-color: #89ddff;
+    --jp-mirror-editor-property-color: #89ddff;
+    --jp-mirror-editor-operator-color: #c792ea;
+    --jp-mirror-editor-comment-color: #546e7a;
+    --jp-mirror-editor-string-color: #c3e88d;
+    --jp-mirror-editor-string-2-color: #ff5370;
+    --jp-mirror-editor-meta-color: #f77669;
+    --jp-mirror-editor-qualifier-color: #80cbc4;
+    --jp-mirror-editor-builtin-color: #80cbc4;
+    --jp-mirror-editor-bracket-color: #d4d4d4;
+    --jp-mirror-editor-tag-color: #7fdbca;
+    --jp-mirror-editor-attribute-color: #ffcb6b;
+    --jp-mirror-editor-header-color: #ffcb6b;
+    --jp-mirror-editor-quote-color: #c3e88d;
+    --jp-mirror-editor-link-color: #82aaff;
+    --jp-mirror-editor-error-color: #ff5370;
+    --jp-mirror-editor-hr-color: #546e7a;
+  
+    /* General editor styles
+     * Adjust editor styles for dark mode
+     */
+    --jp-editor-selected-background: #424242;
+    --jp-editor-selected-focused-background: #5a5a5a;
+    --jp-editor-cursor-color: var(--jp-ui-font-color0);
+  
+    /* Sidebar-related styles
+     * Adjust sidebar styles for dark mode
+     */
+    --jp-sidebar-min-width: 250px;
+  
+    /* Search-related styles
+     * Adjust search-related styles for dark mode
+     */
+    --jp-search-selected-match-background-color: #4a90e2;
+    --jp-search-selected-match-color: white;
+    --jp-search-unselected-match-background-color: var(
+      --jp-inverse-layout-color0
+    );
+    --jp-search-unselected-match-color: var(--jp-ui-inverse-font-color0);
+  
+    /* Icon colors remain the same */
+  }
+  
+.notebook_download_link {
+  text-decoration: underline;
+  color: aqua;
+  margin-left: var(--jp-cell-prompt-width);
+}
+
+.notebook_download_link:hover {
+  text-decoration: none;
+  color: aqua;
+  margin-left: var(--jp-cell-prompt-width);
+}

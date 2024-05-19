@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block site_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css')}}">
+{% endblock %}
+
+{% block title %}
+Kamil Arif
+{% endblock %}
+
+{% block body %}
+
+<h1>Blog</h1>
+<div class='nb-container'>
+    {% for notebook in notebooks %}
+        <a class='notebook' href='/notebook/{{notebook[1]}}'>
+            <h3>{{notebook[0]}}</h3>            
+            <p><i>{{notebook[2]}}</i>—&emsp;{{notebook[3]}}</p>
+        </a>
+    {% endfor %}
+</div>
+
+{% endblock %}
