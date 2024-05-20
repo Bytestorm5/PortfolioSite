@@ -4,7 +4,7 @@ import os
 import time
 import pandas as pd
 
-nb_directory = pd.read_csv(os.path.join('notebooks', 'directory.csv'))
+nb_directory = pd.read_csv(os.path.join('notebooks', 'directory.csv')).to_numpy()
 
 def convert_notebook_to_html(notebook_path):
     with open(notebook_path, encoding='utf-8') as f:
@@ -14,6 +14,9 @@ def convert_notebook_to_html(notebook_path):
     return body
 
 def load_nb(name: str):
+    if not name in nb_directory[:, 1]:
+        return None
+    
     nb_path = os.path.join('notebooks', 'nbs', name + '.ipynb')    
     
     if not os.path.exists(nb_path):
@@ -34,11 +37,13 @@ def load_nb(name: str):
         return html_content
 
 def get_nb_path(name):
+    if not name in nb_directory[:, 0]:
+        return None
     nb_path = os.path.join('notebooks', 'nbs', name + '.ipynb')
     if os.path.exists(nb_path):
         return nb_path
     else:
-        return False
+        return None
 
 def get_nbs():
-    return nb_directory.to_numpy()
+    return nb_directory

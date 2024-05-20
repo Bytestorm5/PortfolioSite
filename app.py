@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_file
+from flask import Flask, render_template, send_file, redirect, url_for
 from werkzeug import exceptions as HTTPError
 import platform
 from nb import load_nb, get_nbs, get_nb_path
@@ -24,12 +24,15 @@ def blog():
 
 @app.route('/notebook/<nb>')
 def notebook(nb:str):
-    return render_template('notebook.html', notebook=load_nb(escape(nb)))
+    nb = load_nb(escape(nb))
+    if nb == None:
+        return redirect(url_for('blog'))
+    return render_template('notebook.html', notebook=nb)
 
 @app.route('/download_notebook/<nb>')
 def dl_notebook(nb:str):
     path = get_nb_path(escape(nb))
-    if not path:
+    if path == None:
         raise HTTPError.NotFound("This notebook does not exist")
     else:
         return send_file(
