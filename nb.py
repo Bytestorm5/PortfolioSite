@@ -37,7 +37,7 @@ def load_nb(name: str):
         return html_content
 
 def get_nb_path(name):
-    if not name in nb_directory[:, 0]:
+    if not name in nb_directory[:, 1]:
         return None
     nb_path = os.path.join('notebooks', 'nbs', name + '.ipynb')
     if os.path.exists(nb_path):
