@@ -42,6 +42,10 @@ def dl_notebook(nb:str):
             download_name=f'{escape(nb)}.ipynb'
         )
 
+@app.route('/details/att_s24')
+def att_s24():
+    return render_template('/work_details/att_s24.html')
+
 if __name__ == '__main__':
     if platform.system() == 'Windows':
         app.run(debug=True, port=5000)

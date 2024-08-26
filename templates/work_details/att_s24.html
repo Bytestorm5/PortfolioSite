@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block site_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}">
+{% endblock %}
+
+{% block title %}
+Kamil Arif
+{% endblock %}
+
+{% block body %}
+<h1>AT&T TDP S24 Internship Details</h1>
+<p>I have the luxury of having worked in a company that keeps more docuents on hand than it knows what to do with, some of which I was allowed to use outside of the company. Because of that, I have a lot of details about this internship that I can share with you, which would otherwise entirely clog up the home page.</p>
+<h3>Manager Comments</h3>
+<p>These are my manager's comments from the end of the internship, which is put together using feedback from my Business Partner <em>(the person who I actually work with and receive tasks from)</em>, myself, and a few other people who I worked with in the course of the internship, along with anything they themselves observed. I haven't changed anything about them aside from some minor format changes to make it fit this site better:</p>
+<blockquote>
+    <p>
+        During his 10-week summer internship, Kamil achieved several notable accomplishments. He developed
+    an algorithm to determine which IP addresses can be cleaned and recovered from the network, a high-
+    visibility task with significant business value. His work was presented to an operations team tasked with
+    reclaiming IP addresses, potentially saving the company money and improving the network. Additionally,
+    Kamil was instrumental in the IP Defragmentation project, developing a generalizable algorithm for the
+    SBC-Lightspeed space and overcoming historical pushback from Ops. He also integrated a new dataset
+    from the A&AI service into the database, cleaning and consolidating the data into a comprehensive
+    sheet. For the IIC project, Kamil developed a raytraced simulation to model WiFi signal strength, which
+    was initially out of scope but successfully implemented, contributing to his team's second-place finish
+    and a presentation to AT&T's CEO Jeremy Legg.
+    </p>
+    <p>
+        As Kamil returns to college, he can reflect on his strong data analytics abilities and his knack for quickly
+    grasping difficult concepts. He should continue to develop his knowledge in networking and expand into
+    other technical areas. One area of focus could be work on presentation skills and to be more proactive in
+    collaborating with team members. This can take him far. It was a pleasure to have him on the team, and
+    I wish him the best of luck in college!
+    <p>
+</blockquote>
+<h3>Projects</h3>
+<b>Main Project- Lightspeed Movements: </b>
+<blockquote>
+    <p>
+        The majority of my time in the internship was spent on IP
+        Reallocation. I was able to develop an algorithm that can generalize to other spaces,
+        and I was able to get working results for the SBC-Lightspeed space. Historically these
+        initiatives have received a lot of pushback from Ops for being very difficult to implement,
+        but there was little pushback on basis of practicality when my results were presented.
+        There are ongoing issues with regards to funding for the project, but that's outside of the
+        influence of my work.
+    </p>
+    <p>
+        The goal of IP Reallocation is to create the largest possible <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_blocks">CIDR Blocks</a> of IP addresses that are not used by a customer.
+        There's a few reasons why this is deriable, which mostly boil down to making it easier to find large blocks of IPs to fill a given need. 
+        We would not like to have to find 65,636 IPs in one spot <em>at the time we need them</em>, but rather we'd like to be ready for the possibility. 
+        There are also certain block sizes that are suitable for sale, which we will typically treat as a "standard" size we would like to fully utilize or empty.
+        Due to these reasons, a large block of IP addresses has a intrinsically higher value per IP than a small block of IPs- there aren't any hard numbers for this, but I have some estimates.
+    </p>
+    <p>
+        I was able to build an algorithm that is able to move IPs in a manner such that we can build larger and larger CIDR blocks over time, by "moving" IP addresses around, and without ever fully taking away or allocating IP Addresses.
+        Since most IPs are considered "Dynamic"- that is, the user isn't particularly worried <em>what</em> IP Address they have so long that they have one- we can change these at will and thus "move" an IP allocation without ever disturbing the user.
+        However, these movements take time from the Operations team to do- even though the system is mostly automatic, every range of IP Addresses has their own quirks and strange behaviors that need to be accounted for.
+        Given that, it's not enough simply to have a set of movements that organize our IP Address space in a nice way, but rather we must have an <em>optimal</em> set of movements that reached that state with the least amount of movements.
+        Ultimately, we still end up giving Operations a bunch of work- they still have a job to do- but we shouldn't drive them around in circles allocating and deallocating the same IP ranges repeatedly.
+    </p>
+    <p>
+        At the end of this project, I had generated a set of movements that would efficiently free up 6 /16 blocks (6 sets of 65,636 IP Addresses). 
+        6 /16s on their own tally to a total around $23M- though, because these IP addresses already existed before, the actual difference in value affected by my changes is closer to <b>$9M</b>.
+        Of course this isn't real money on a real balance sheet- but this is the monetary value assigned to these changes because we COULD sell these IP blocks, and we WOULD sell them for a higher price if they came in larger blocks.
+        For a few reasons, we don't want to sell IP blocks- at least, not a lot of them- but the value is there regardless of whether we capitalize on that value ourselves, or profit from allowing someone else to capitalize on it.
+    </p>
+</blockquote>
+<b>Side Project- A&AI Data Ingestion: </b>
+<blockquote>
+    <p>
+        This is a new dataset that I am bringing into our Databases from the
+    A&AI service, which serves a total of 119 zones. For each zone, a folder is being made in
+    a VM with 4 sheets indicating different IPs. I was tasked with bringing this data into our
+    Filesystem, cleaning the data, and loading it as a single comprehensive sheet. This is
+    nearly complete- we found some duplicate entries, so we are waiting to verify whether
+    that's a problem or not before making the final deployment.
+    </p>
+    
+</blockquote>
+<b>Intern Innovation Challenge- RouterVision: </b>
+<blockquote>
+    <p>
+        My group's Intern Innovation Challenge (IIC) project was a proof-of-concept for a service called RouterVision, 
+        where customers may scan a room or building with their phone's LIDAR sensor & camera. From there, we can use this model
+        of the building to simulate wifi signal strength in different configurations of wifi access points & extenders, as well as finding the
+        optimal placements of wifi equipment with respect to coverage and cost.
+    </p>
+    <p>
+        Services like this exist, but typically either require a detailed 3D model of the building, or don't come with the full feature
+        set we were targeting. Our pitch was for RouterVision to be one of many tools that AT&T develops and includes with its Internet placements
+        in order to "sweeten the deal" and add a new vector by which to compete with other companies independent of infrastructure limitations. 
+    </p>
+    <p>
+        For our IIC project, we needed to be able to simulate the Wifi signal
+    strength as it propagates though an area. While we originally intended to use existing
+    software, we found it infeasible to integrate with them in our short timeframe, so we opted
+    to build a demo simulation from scratch, which I took up. I developed a simple Raytraced
+    simulation- in doing so having to solve a lot of the geometric properties of light to simulate
+    signal travel properly. I also ended up copying down the measurements for the scanned
+    area to put together our demo.
+    </p>
+</blockquote>
+{% endblock %}

@@ -38,7 +38,8 @@ Kamil Arif
             <li><a href="https://www.cvat.ai/">CVAT</a> <span class='has-tooltip' title="To this day I have an evisceral reaction to stock images of kitchens.">!</span></li>
             <li>AWS</li>
             <li>DigitalOcean <span class='has-tooltip' title="That's what this site is running on!">!</span></li>
-            <li>Unity</li>            
+            <li>Unity</li>         
+            <li>Databricks</li>   
         </ul>
     </div>
     <div>
@@ -49,11 +50,22 @@ Kamil Arif
             <li>Flask <span class='has-tooltip' title="That's what this site is built on!">!</span></li>
             <li>Scikit & co.</li>
             <li><a href="https://plotly.com/dash/">Dash</a></li>
+            <li>PySpark</li>
         </ul>
     </div>
 </div>
 <h2>Jobs</h2>
-(In order of recency)
+<div class='row-section'>
+    <div>
+        <h3>AT&T; Intern</h3>
+        <b>Full-time; Jun 2024 - Aug 2024</b>
+        <blockquote>
+            <p>I worked on an IP Reallocation algorithm to extract the largest possible IP blocks from AT&T's IPv4 address space, by "moving" customer IPs from one location to another. By arranging blocks such that the largest amount of unused IPs are all in the same spot, we are able to allocate them out more easily when we need them, or sell them in bulk if extra funds are needed. The wrinkle here is that every movement of IP addresses has to be done by another team- so we need to minimize the amount of "moves" we are making to save man-hours spent in reallocation efforts, and more practically to save them a headache or three.</p>
+            <p>All things considered, I was able to generate moves to empty out 6 /16 blocks, which is 6 sets of 65,356 IP Addresses. Even though we have not taken a single IP address from a customer nor allocated any new ones, this reorganization of IPs <b>generated ~$9M in business value.</b> This is because the per-IP value of each IP address increases if part of a larger whole- 2 free IPs together is inherently worth less than 65K IPs together. We can calculate the difference in the value of all IPs affected before and after based on some internal estimates of per-IP value.</p>
+            <a href="{{ url_for('att_s24')}}">See More</a>
+        </blockquote>
+    </div>
+</div>
 <div class='row-section'>
     <div>
         <h3>NJIT; Grader</h3>
@@ -73,10 +85,11 @@ Kamil Arif
             <p>At CDx, I worked on an Image Classification pipeline that could differentiate cancerous cells from debris and other such things on a microscope slide. I ended up working on every part of the process except the final integration, from extracting images from the company's DB to training the model.</p>
             <p>The model itself was built on the ResNet-50 architecture using Keras, starting from ImageNet weights and fine-tuned from there. The model was decently performant (just under 90% accuracy) considering that the data wasn't the cleanest, and I had yet to learn about <a href="https://thecleverprogrammer.com/2021/04/25/class-balancing-in-machine-learning/">class balancing</a>.</p>
         </blockquote>
+        
     </div>
 </div>
 <h2>Misc.</h2>
-(If you're looking for projects, they have a dedicated page)
+(If you're looking for projects, they have a <a href="{{ url_for('projects') }}">dedicated page</a>)
 <h3>Langchain <span class='code-text'>as_retriever()</span> Documentation</h3>
 <blockquote>
     <p>I was trying to filter the documents that LangChain feeds to my LLM, and eventually figured it out. I realized this wasn't written in the documentation so I made a PR to explain the filtering functionality in more detail, along with a <i>(in hindsight, not amazing)</i> suggestion for a change to the actual function.</p>
@@ -85,8 +98,8 @@ Kamil Arif
 </blockquote>
 <h3>CVAT Installation Guide Contribution</h3>
 <blockquote>
-    <p>I'm the reason there's a <a href="https://opencv.github.io/cvat/docs/administration/basics/installation/#windows-10">guide</a> to install CVAT in Windows! This was the first PR I made to a public repo and I didn't get yelled at, so I take that as a win!</p>
-    <p>The issue was basically that CVAT was designed for Linux, but the Windows installation instructed users to install it via Git Bash- which wasn't ideal, but it'd work if you were just using the basic functionalities of CVAT. However for my project I wasn't; and due to an issue in one of CVAT's dependencies, it would actually break on Windows. So I submitted a PR to instruct users to install CVAT on WSL2 instead, which was probably the better approach regardless.</p>
+    <p>I'm the reason there's a working <a href="https://opencv.github.io/cvat/docs/administration/basics/installation/#windows-10">guide</a> to install CVAT in Windows! This was the first PR I made to a public repo and I didn't get yelled at, so I take that as a win!</p>
+    <p>The issue was basically that CVAT was designed for Linux, but the Windows installation instructed users to install it using Git Bash as a stand-in for Linux- which wasn't ideal, but it'd work if you were just using the basic functionalities of CVAT. However for my project I wasn't; and due to an issue in one of CVAT's dependencies, it would actually break on Windows. So I submitted a PR to instruct users to install CVAT on WSL2 instead, which was probably the better approach regardless.</p>
     <a href="https://github.com/opencv/cvat/pull/5558">https://github.com/opencv/cvat/pull/5558</a>
 </blockquote>
 {% endblock %}
