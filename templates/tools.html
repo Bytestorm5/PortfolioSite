@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block site_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css')}}">
+{% endblock %}
+
+{% block title %}
+Kamil Arif
+{% endblock %}
+
+{% block body %}
+
+<h1>Tools</h1>
+<div class='nb-container'>
+    <a class='notebook' href='/tools/righthand_regex'>
+        <h3>Righthand Regex Tester</h3>            
+        <p><i>9/22/2024</i>—&emsp;A tool that forces right-to-left languages into a left-to-right format in order to make it easier to write valid regex patterns for them.</p>
+    </a>
+</div>
+
+{% endblock %}

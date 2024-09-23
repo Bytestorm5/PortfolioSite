@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+
+{% block site_head %}
+<style>
+    body {
+        margin: 20px;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="text"], textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    /* Styling for Arabic or RTL scripts to force character separation */
+    .force-ltr {
+        unicode-bidi: isolate-override;
+        direction: ltr;  /* Force left-to-right rendering */
+        font-family: Arial, sans-serif;
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #218838;
+    }
+
+    .result {
+        margin-top: 20px;
+    }
+
+    .result div {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .match {
+        background-color: oklch(25.37% 0.037 152.82);
+        border: 1px solid oklch(29.53% 0.052 152.08);
+    }
+
+    .no-match {
+        background-color: oklch(25.37% 0.037 16.56);
+        border: 1px solid oklch(29.53% 0.052 16);
+    }
+
+    .groups {
+        margin-left: 20px;
+    }
+
+    .groups strong {
+        display: inline-block;
+        width: 100px;
+    }
+</style>
+{% endblock %}
+
+{% block title %}
+Righthand Regex Tester
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <label for="regex">Regular Expression (without / delimiters):</label>
+    <input type="text" id="regex" placeholder="Enter your regex here" class="force-ltr">
+
+    <label for="flags">Flags (optional):</label>
+    <input type="text" id="flags" placeholder="g, i, m, etc.">
+
+    <label for="test-cases">Test Cases (one per line):</label>
+    <textarea id="test-cases" rows="5" placeholder="Enter test cases, one per line..." class="force-ltr"></textarea>
+
+    <label for="replacement">Substitution Pattern (optional):</label>
+    <input type="text" id="replacement" placeholder="Enter replacement pattern..." class="force-ltr">
+
+    <button onclick="testRegex()">Test Regex</button>
+
+    <div id="results" class="result"></div>
+</div>
+
+<script>
+    function testRegex() {
+        const regexInput = document.getElementById("regex").value;
+        const flagsInput = document.getElementById("flags").value;
+        const testCases = document.getElementById("test-cases").value.split("\n");
+        const replacement = document.getElementById("replacement").value;
+        const resultsDiv = document.getElementById("results");
+
+        // Clear previous results
+        resultsDiv.innerHTML = "";
+
+        // Ensure the regex is valid
+        let regex;
+        try {
+            regex = new RegExp(regexInput, flagsInput);
+        } catch (e) {
+            resultsDiv.innerHTML = `<div class="no-match">Invalid Regular Expression: ${e.message}</div>`;
+            return;
+        }
+
+        // Process test cases for RTL scripts (like Arabic)
+        testCases.forEach(testCase => {
+            //const processedCase = processArabic(testCase);
+
+            const resultDiv = document.createElement("div");
+            const matchResult = testCase.match(regex);
+
+            if (matchResult) {
+                resultDiv.className = "match";
+                resultDiv.innerHTML = `<strong>Match:</strong> "${testCase}"<br>`;
+
+                // Show groups
+                if (matchResult.length > 1) {
+                    const groupsDiv = document.createElement("div");
+                    groupsDiv.className = "groups";
+                    groupsDiv.innerHTML = `<strong>Groups:</strong><br>`;
+                    matchResult.forEach((group, index) => {
+                        if (index === 0) return; // Skip the full match
+                        groupsDiv.innerHTML += `<strong>Group ${index}:</strong> "${group}"<br>`;
+                    });
+                    resultDiv.appendChild(groupsDiv);
+                }
+
+                // Perform substitution if replacement pattern is provided
+                if (replacement) {
+                    const substitutionResult = testCase.replace(regex, replacement);
+                    resultDiv.innerHTML += `<strong>Substitution:</strong> "${substitutionResult}"`;
+                }
+            } else {
+                resultDiv.className = "no-match";
+                resultDiv.innerHTML = `<strong>No Match:</strong> "${testCase}"`;
+            }
+
+            resultsDiv.appendChild(resultDiv);
+        });
+    }
+
+    // Function to process Arabic text and break it into individual characters
+    function processArabic(text) {
+        // Break down each Arabic character by using Array.from() to decompose it
+        const decomposedText = Array.from(text).map(char => {
+            // Remove special Unicode points for formatting or merging
+            if (char === "\u200F" || char === "\u200E" || char === "\u200C" || char === "\u200D") {
+                return '';
+            }
+            return char;
+        }).join(' ');
+        
+        // Reverse the order of Arabic characters to be displayed left-to-right
+        return decomposedText.split('').reverse().join('');
+    }
+</script>
+{% endblock %}

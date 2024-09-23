@@ -46,6 +46,14 @@ def dl_notebook(nb:str):
 def att_s24():
     return render_template('/work_details/att_s24.html')
 
+@app.route('/tools')
+def tools():
+    return render_template('tools.html')
+
+@app.route('/tools/righthand_regex')
+def righthand_regex():
+    return render_template('/tools/righthand_regex.html')
+
 if __name__ == '__main__':
     if platform.system() == 'Windows':
         app.run(debug=True, port=5000)
