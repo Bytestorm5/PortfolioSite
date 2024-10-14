@@ -61,26 +61,37 @@ def color_picker():
 from coloraide import Color
 import itertools
 import numpy as np
+from scipy.stats import norm
 
 @app.route('/tools_api/color_picker', methods = ["POST"])
+@profile
 def color_picker_api():
     colors_raw = request.json['colors']
-    colors = [Color(c) for c in colors_raw]
+    colors = [Color(c).convert('oklch') for c in colors_raw]
     
-    def color_diff(color1: Color, color2: Color):
-        diffs = [color1.delta_e(color2, method="ok")] # Normal Vision
-        for filter in ['protan', 'deutan', 'tritan']: # Diff Colorlindness Types
-            color1_t = color1.filter(filter)
-            color2_t = color2.filter(filter)
-            diffs.append(color1_t.delta_e(color2_t, method="ok"))
-        return min(diffs) / 100
+    L_mean = np.mean([c._coords[0] for c in colors])
+    C_mean = np.mean([c._coords[1] for c in colors])
+    L_std = np.std([c._coords[0] for c in colors])
+    C_std = np.std([c._coords[1] for c in colors])
+    
+    for i in range(len(colors)):
+        for filter in ['protan', 'deutan', 'tritan']:
+            colors.append(colors[i].filter(filter).fit('srgb'))
     
     def objective(LCH):
         test_color = Color('oklch', LCH).fit('srgb')
-        return min([color_diff(test_color, c) for c in colors])
+        diff = min([test_color.delta_e(c, method='ok') for c in colors])
+        
+        L_prob = norm.pdf(LCH[0], L_mean, L_std)
+        C_prob = norm.pdf(LCH[1], C_mean, C_std)
+
+        # Combine the probabilities for weighting
+        weight = L_prob * C_prob
+
+        return diff - 5*(1 - weight)
     
     search_space = itertools.product(
-        np.linspace(0, 1, 10), # L
+        np.linspace(0, 1, 5), # L
         np.linspace(0, 0.37, 5), # C
         np.linspace(0, 360, 36), # H        
     )

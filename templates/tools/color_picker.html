@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
 {% block site_head %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,6 +15,7 @@
         }
         .remove-color {
             margin-left: 10px;
+            color: red;
             cursor: pointer;
         }
     </style>
@@ -28,8 +30,8 @@ Differentiated Color Picker
     <h3>Differentiated Color Picker</h3>
     <div id="color-inputs">
         <div class="color-input">
-            <input type="color" class="color-value" value="#ff5733" />
-            <button class="remove-color">X</button>
+            <input type="text" class="color-value" value="#ff5733" />
+            <button class="remove-color">Remove</button>
         </div>
     </div>
     <button id="add-color">Add Color</button>
@@ -43,10 +45,23 @@ Differentiated Color Picker
         $('#add-color').click(function() {
             $('#color-inputs').append(`
                 <div class="color-input">
-                    <input type="color" class="color-value" value="#ffffff" />
-                    <button class="remove-color">X</button>
+                    <input type="text" class="color-value" value="#ffffff" />
+                    <button class="remove-color">Remove</button>
                 </div>
             `);
+        });
+
+        $('#color-inputs').on('focus', '.color-value', function() {
+            $(this).spectrum({
+                showInput: true,
+                allowEmpty: true,
+                showInitial: true,
+                preferredFormat: "hex",
+                hideAfterPaletteSelect: true,
+                change: function(color) {
+                    $(this).val(color.toHexString());
+                }
+            });
         });
 
         $(document).on('click', '.remove-color', function() {

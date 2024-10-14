@@ -1,0 +1,480 @@
+         9182704 function calls (8807876 primitive calls) in 16.261 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+    32702    0.555    0.000   31.799    0.001 {method 'sendall' of '_socket.socket' objects}
+      901    0.031    0.000   28.104    0.031 C:\Users\nfkam\Documents\GitHub\PortfolioSite\app.py:108(objective)
+     8171    0.072    0.000   25.411    0.003 C:\Python312\Lib\threading.py:1115(join)
+    16351    0.165    0.000   19.159    0.001 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_net_command.py:102(send)
+      901    0.010    0.000   17.811    0.020 C:\Python312\Lib\concurrent\futures\_base.py:646(__exit__)
+      901    0.023    0.000   16.293    0.018 C:\Python312\Lib\concurrent\futures\thread.py:219(shutdown)
+      2/1    0.001    0.001   16.243   16.243 C:\Users\nfkam\Documents\GitHub\PortfolioSite\app.py:93(color_picker_api)
+70310/220    0.031    0.000   15.288    0.069 {built-in method builtins.max}
+     8171    0.079    0.000   13.938    0.002 C:\Python312\Lib\threading.py:1153(_wait_for_tstate_lock)
+ 8171/901    0.131    0.000   12.637    0.014 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydev_bundle\pydev_monkey.py:1089(__call__)
+ 8171/901    0.064    0.000   12.540    0.014 C:\Python312\Lib\threading.py:1016(_bootstrap)
+ 8171/901    0.127    0.000   12.488    0.014 C:\Python312\Lib\threading.py:1056(_bootstrap_inner)
+ 8171/901    0.260    0.000    8.442    0.009 C:\Python312\Lib\threading.py:999(run)
+    14175    0.098    0.000    7.079    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\_reloader.py:40(_iter_module_paths)
+    21624    0.167    0.000    5.897    0.000 C:\Python312\Lib\concurrent\futures\thread.py:164(submit)
+ 8171/901    0.197    0.000    5.578    0.006 C:\Python312\Lib\concurrent\futures\thread.py:69(_worker)
+    15345    0.515    0.000    5.204    0.000 {built-in method nt.stat}
+    14273    0.424    0.000    5.143    0.000 {built-in method nt._path_isfile}
+    21624    0.093    0.000    5.116    0.000 C:\Python312\Lib\concurrent\futures\thread.py:183(_adjust_thread_count)
+26475/26472    0.130    0.000    4.965    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:1238(delta_e)
+     8171    0.112    0.000    4.608    0.001 C:\Python312\Lib\threading.py:973(start)
+62363/62357    0.315    0.000    4.582    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:598(convert)
+21624/21621    0.134    0.000    4.563    0.000 C:\Python312\Lib\concurrent\futures\thread.py:53(run)
+16455/16385    0.154    0.000    4.199    0.000 C:\Python312\Lib\queue.py:154(get)
+9125/9113    0.150    0.000    4.179    0.000 C:\Python312\Lib\threading.py:637(wait)
+21624/21621    0.070    0.000    3.657    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\distance\delta_e_ok.py:20(distance)
+21624/21621    0.215    0.000    3.587    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\distance\__init__.py:38(distance_euclidean)
+    62345    0.487    0.000    2.678    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\convert.py:122(convert)
+25350/22940    0.254    0.000    2.540    0.000 C:\Python312\Lib\threading.py:323(wait)
+14629/1792    0.234    0.000    2.200    0.001 {method 'get' of '_queue.SimpleQueue' objects}
+  920/919    0.010    0.000    2.153    0.002 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:938(fit)
+      655    0.061    0.000    1.943    0.003 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\gamut\fit_minde_chroma.py:48(fit)
+    13774    0.084    0.000    1.674    0.000 {built-in method builtins.next}
+     8171    0.025    0.000    1.631    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydev_bundle\pydev_monkey.py:235(_on_set_trace_for_new_thread)
+     8171    0.101    0.000    1.522    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd.py:1071(enable_tracing)
+59950/59944    0.274    0.000    1.458    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:593(clone)
+60605/60599    0.107    0.000    1.104    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:581(new)
+61512/61506    0.203    0.000    1.018    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:175(__init__)
+    16342    0.128    0.000    0.879    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd_tracing.py:83(SetTrace)
+    22525    0.092    0.000    0.870    0.000 C:\Python312\Lib\concurrent\futures\_base.py:199(as_completed)
+     4851    0.105    0.000    0.844    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\distance\delta_e_2000.py:32(distance)
+62724/62718    0.586    0.000    0.767    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:232(_parse)
+   117432    0.528    0.000    0.714    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:1423(coords)
+    67591    0.348    0.000    0.662    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\algebra.py:1109(matmul)
+    17125    0.026    0.000    0.587    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\oklab\__init__.py:105(from_base)
+    17125    0.173    0.000    0.561    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\oklab\__init__.py:74(xyz_d65_to_oklab)
+     1093    0.014    0.000    0.473    0.000 C:\Python312\Lib\os.py:282(walk)
+     8705    0.038    0.000    0.465    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd.py:1626(notify_thread_created)
+    16358    0.113    0.000    0.428    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_net_command.py:56(__init__)
+     8171    0.080    0.000    0.389    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd_tracing.py:274(set_trace_to_threads)
+    16342    0.382    0.000    0.382    0.000 {built-in method _thread.start_new_thread}
+     8171    0.036    0.000    0.374    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd.py:1651(notify_thread_not_alive)
+     1802    0.117    0.000    0.356    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\scipy\stats\_distn_infrastructure.py:2002(pdf)
+    21801    0.030    0.000    0.331    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\srgb_linear.py:66(to_base)
+    26475    0.089    0.000    0.327    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:565(_handle_color_input)
+   202761    0.277    0.000    0.313    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\algebra.py:726(vdot)
+    21801    0.077    0.000    0.301    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\srgb_linear.py:24(lin_srgb_to_xyz)
+      994    0.033    0.000    0.296    0.000 {built-in method nt.scandir}
+469434/416388    0.130    0.000    0.284    0.000 {built-in method builtins.isinstance}
+    21624    0.141    0.000    0.281    0.000 C:\Python312\Lib\concurrent\futures\_base.py:537(set_result)
+      886    0.029    0.000    0.278    0.000 {built-in method nt._path_islink}
+     8171    0.037    0.000    0.271    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_net_command_factory_json.py:115(make_thread_created_message)
+     8171    0.038    0.000    0.257    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_net_command_factory_json.py:135(make_thread_killed_message)
+    21624    0.118    0.000    0.238    0.000 C:\Python312\Lib\threading.py:468(acquire)
+    78819    0.122    0.000    0.223    0.000 C:\Python312\Lib\threading.py:394(notify)
+     8171    0.019    0.000    0.212    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydev_bundle\pydev_monkey.py:1174(pydev_start_new_thread)
+    21624    0.056    0.000    0.203    0.000 C:\Python312\Lib\concurrent\futures\_base.py:328(__init__)
+    16358    0.021    0.000    0.189    0.000 C:\Python312\Lib\json\__init__.py:183(dumps)
+     6718    0.030    0.000    0.184    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\lab\__init__.py:80(from_base)
+    68933    0.140    0.000    0.183    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:889(chromatic_adaptation)
+     8171    0.091    0.000    0.180    0.000 C:\Python312\Lib\threading.py:882(__init__)
+    31597    0.118    0.000    0.174    0.000 C:\Python312\Lib\threading.py:277(__init__)
+   352296    0.134    0.000    0.172    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\__init__.py:214(resolve_channel)
+    16358    0.039    0.000    0.168    0.000 C:\Python312\Lib\json\encoder.py:183(encode)
+     9856    0.054    0.000    0.167    0.000 C:\Python312\Lib\threading.py:616(set)
+    16358    0.015    0.000    0.167    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_comm.py:355(add_command)
+    31480    0.069    0.000    0.165    0.000 C:\Python312\Lib\threading.py:424(notify_all)
+    26523    0.047    0.000    0.160    0.000 C:\Python312\Lib\typing.py:1175(__instancecheck__)
+    16358    0.048    0.000    0.152    0.000 C:\Python312\Lib\queue.py:122(put)
+     2424    0.013    0.000    0.151    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:975(in_gamut)
+    21624    0.108    0.000    0.151    0.000 {built-in method builtins.sum}
+     6718    0.066    0.000    0.148    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\lab\__init__.py:43(xyz_to_lab)
+     8171    0.051    0.000    0.144    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd_tracing.py:47(_internal_set_trace)
+   175445    0.094    0.000    0.143    0.000 C:\Python312\Lib\threading.py:299(__enter__)
+    14629    0.074    0.000    0.141    0.000 C:\Python312\Lib\threading.py:515(release)
+   270589    0.107    0.000    0.138    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\algebra.py:144(clamp)
+    39279    0.055    0.000    0.135    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\lch\__init__.py:65(to_base)
+    24513    0.064    0.000    0.133    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd_tracing.py:348(increase_tracing_count)
+     1212    0.009    0.000    0.132    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:650(update)
+     1802    0.030    0.000    0.131    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\scipy\stats\_distn_infrastructure.py:600(argsreduce)
+191274/321    1.302    0.000    0.125    0.000 {method 'acquire' of '_thread.lock' objects}
+   175446    0.089    0.000    0.119    0.000 C:\Python312\Lib\threading.py:302(__exit__)
+    16358    0.115    0.000    0.115    0.000 C:\Python312\Lib\json\encoder.py:205(iterencode)
+    21624    0.077    0.000    0.114    0.000 C:\Python312\Lib\concurrent\futures\_base.py:497(set_running_or_notify_cancel)
+    26523    0.028    0.000    0.113    0.000 C:\Python312\Lib\typing.py:1446(__subclasscheck__)
+    23375    0.076    0.000    0.111    0.000 C:\Python312\Lib\concurrent\futures\_base.py:177(_yield_finished_futures)
+    21624    0.080    0.000    0.109    0.000 C:\Python312\Lib\concurrent\futures\_base.py:428(result)
+    83353    0.083    0.000    0.107    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\algebra.py:175(nth_root)
+     8223    0.027    0.000    0.101    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_constants.py:606(get_current_thread_id)
+    16342    0.028    0.000    0.099    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\_debug_adapter\pydevd_schema.py:1171(to_dict)
+     5295    0.051    0.000    0.098    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\gamut\__init__.py:16(clip_channels)
+    75108    0.097    0.000    0.097    0.000 {method 'release' of '_thread.lock' objects}
+     6568    0.009    0.000    0.094    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\srgb_linear.py:71(from_base)
+   764992    0.090    0.000    0.090    0.000 {built-in method builtins.len}
+   132339    0.068    0.000    0.087    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:199(__getitem__)
+     6568    0.020    0.000    0.086    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\srgb_linear.py:34(xyz_to_lin_srgb)
+    39279    0.047    0.000    0.080    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\lch\__init__.py:24(lch_to_lab)
+    82544    0.047    0.000    0.079    0.000 C:\Python312\Lib\threading.py:314(_is_owned)
+16359/7732    0.031    0.000    0.078    0.000 {built-in method time.sleep}
+     4927    0.021    0.000    0.078    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\lab\__init__.py:75(to_base)
+     6585    0.011    0.000    0.077    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\srgb\__init__.py:58(from_base)
+     8171    0.031    0.000    0.077    0.000 C:\Python312\Lib\ntpath.py:257(splitext)
+     2471    0.007    0.000    0.076    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\oklab\__init__.py:100(to_base)
+    26531    0.047    0.000    0.075    0.000 {built-in method builtins.issubclass}
+     8171    0.041    0.000    0.074    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_constants.py:587(_get_or_compute_thread_id_with_lock)
+     2471    0.020    0.000    0.069    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\oklab\__init__.py:64(oklab_to_xyz_d65)
+    16342    0.029    0.000    0.068    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\_debug_adapter\pydevd_schema.py:17214(to_dict)
+     6585    0.037    0.000    0.066    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\srgb\__init__.py:27(gam_srgb)
+     1802    0.017    0.000    0.066    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\lib\_stride_tricks_impl.py:495(broadcast_arrays)
+  528/264    0.003    0.000    0.065    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:906(clip)
+    16342    0.037    0.000    0.062    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_additional_thread_info_regular.py:139(set_additional_thread_info)
+    11645    0.027    0.000    0.062    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\algebra.py:1829(__call__)
+    22223    0.048    0.000    0.062    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:212(__setitem__)
+    45295    0.060    0.000    0.060    0.000 {built-in method _thread.allocate_lock}
+     9072    0.029    0.000    0.060    0.000 C:\Python312\Lib\threading.py:588(__init__)
+    71367    0.057    0.000    0.057    0.000 {built-in method builtins.getattr}
+   222229    0.057    0.000    0.057    0.000 {method 'get' of 'dict' objects}
+     4927    0.028    0.000    0.054    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\lab\__init__.py:22(lab_to_xyz)
+     4832    0.030    0.000    0.049    0.000 C:\Python312\Lib\ntpath.py:107(join)
+     8171    0.024    0.000    0.049    0.000 C:\Python312\Lib\threading.py:1043(_set_tstate_lock)
+    26872    0.025    0.000    0.045    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\lab\__init__.py:49(<genexpr>)
+     3604    0.011    0.000    0.045    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\fromnumeric.py:89(_wrapreduction_any_all)
+    86496    0.043    0.000    0.043    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\distance\__init__.py:62(<genexpr>)
+     8171    0.026    0.000    0.041    0.000 C:\Python312\Lib\genericpath.py:133(_splitext)
+   375521    0.040    0.000    0.040    0.000 {built-in method math.isnan}
+     1802    0.028    0.000    0.038    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\lib\_stride_tricks_impl.py:350(_broadcast_to)
+     1802    0.026    0.000    0.038    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\scipy\stats\_distn_infrastructure.py:1016(_support_mask)
+    21624    0.037    0.000    0.037    0.000 C:\Python312\Lib\threading.py:124(RLock)
+   168658    0.036    0.000    0.036    0.000 {method '__exit__' of '_thread.lock' objects}
+     1802    0.007    0.000    0.035    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\fromnumeric.py:2496(any)
+    11645    0.027    0.000    0.035    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\algebra.py:1818(_vector_apply)
+     8171    0.019    0.000    0.035    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd.py:1111(disable_tracing)
+   105291    0.033    0.000    0.033    0.000 {method '__enter__' of '_thread.lock' objects}
+   129292    0.033    0.000    0.033    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:576(space)
+     5596    0.010    0.000    0.033    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\srgb\__init__.py:63(to_base)
+    68933    0.032    0.000    0.032    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\cat.py:106(adapt)
+    16458    0.023    0.000    0.031    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\_debug_adapter\pydevd_base_schema.py:18(_translate_id_to_dap)
+     1685    0.008    0.000    0.031    0.000 C:\Python312\Lib\concurrent\futures\_base.py:81(add_result)
+   161032    0.030    0.000    0.030    0.000 {method 'append' of 'list' objects}
+26559/26524    0.013    0.000    0.028    0.000 C:\Python312\Lib\abc.py:121(__subclasscheck__)
+    30696    0.026    0.000    0.026    0.000 {method 'put' of '_queue.SimpleQueue' objects}
+   111173    0.025    0.000    0.025    0.000 {built-in method builtins.hasattr}
+    49026    0.025    0.000    0.025    0.000 {built-in method sys.settrace}
+    16384    0.019    0.000    0.024    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_utils.py:243(notify_about_gevent_if_needed)
+     8171    0.019    0.000    0.024    0.000 C:\Python312\Lib\threading.py:1079(_stop)
+     8171    0.024    0.000    0.024    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd.py:1064(get_thread_local_trace_func)
+    25350    0.014    0.000    0.023    0.000 C:\Python312\Lib\threading.py:311(_acquire_restore)
+     8171    0.018    0.000    0.023    0.000 C:\Python312\Lib\threading.py:1106(_delete)
+     5596    0.016    0.000    0.023    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\srgb\__init__.py:9(lin_srgb)
+      901    0.009    0.000    0.022    0.000 C:\Python312\Lib\concurrent\futures\_base.py:155(_create_and_install_waiters)
+    10838    0.017    0.000    0.022    0.000 C:\Python312\Lib\ntpath.py:179(splitroot)
+    86704    0.022    0.000    0.022    0.000 {method '__enter__' of '_thread.RLock' objects}
+     2119    0.007    0.000    0.022    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:629(is_achromatic)
+     1802    0.004    0.000    0.021    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\fromnumeric.py:2611(all)
+     1802    0.007    0.000    0.020    0.000 {method 'any' of 'numpy.generic' objects}
+    29795    0.020    0.000    0.020    0.000 {method 'get_nowait' of '_queue.SimpleQueue' objects}
+      901    0.010    0.000    0.020    0.000 C:\Python312\Lib\concurrent\futures\thread.py:126(__init__)
+   111337    0.020    0.000    0.020    0.000 {method '__exit__' of '_thread.RLock' objects}
+    63907    0.020    0.000    0.020    0.000 {built-in method builtins.min}
+    24561    0.013    0.000    0.020    0.000 C:\Python312\Lib\queue.py:209(_qsize)
+   103047    0.019    0.000    0.019    0.000 {built-in method math.copysign}
+    25349    0.012    0.000    0.018    0.000 C:\Python312\Lib\threading.py:308(_release_save)
+     1802    0.004    0.000    0.017    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\scipy\stats\_continuous_distns.py:421(_pdf)
+    58683    0.017    0.000    0.017    0.000 {built-in method math.cos}
+     3610    0.017    0.000    0.017    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+    32710    0.017    0.000    0.017    0.000 {method 'encode' of 'str' objects}
+     2424    0.014    0.000    0.017    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\gamut\__init__.py:45(verify)
+    16550    0.010    0.000    0.017    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_constants.py:439(__enter__)
+     2774    0.004    0.000    0.016    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\lch\__init__.py:70(from_base)
+     1174    0.010    0.000    0.016    0.000 C:\Python312\Lib\ntpath.py:236(split)
+    16394    0.012    0.000    0.016    0.000 C:\Python312\Lib\threading.py:1483(current_thread)
+      914    0.002    0.000    0.016    0.000 C:\Python312\Lib\ntpath.py:268(basename)
+   123252    0.015    0.000    0.015    0.000 {built-in method builtins.abs}
+     8171    0.015    0.000    0.015    0.000 {built-in method _thread._set_sentinel}
+    68057    0.015    0.000    0.015    0.000 {built-in method math.sqrt}
+26559/26524    0.015    0.000    0.015    0.000 {built-in method _abc._abc_subclasscheck}
+   107664    0.015    0.000    0.015    0.000 {built-in method math.radians}
+    16358    0.009    0.000    0.014    0.000 C:\Python312\Lib\queue.py:213(_put)
+    26475    0.010    0.000    0.014    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:333(_is_color)
+     1802    0.002    0.000    0.013    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\_methods.py:59(_any)
+    16352    0.009    0.000    0.013    0.000 C:\Python312\Lib\queue.py:217(_get)
+     1802    0.013    0.000    0.013    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\scipy\stats\_continuous_distns.py:360(_norm_pdf)
+    16342    0.013    0.000    0.013    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\_debug_adapter\pydevd_schema.py:1154(__init__)
+     8171    0.009    0.000    0.013    0.000 C:\Python312\Lib\_weakrefset.py:85(add)
+    24565    0.013    0.000    0.013    0.000 C:\Python312\Lib\threading.py:1234(daemon)
+     8171    0.013    0.000    0.013    0.000 C:\Python312\Lib\weakref.py:427(__setitem__)
+     8171    0.013    0.000    0.013    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_additional_thread_info_regular.py:61(__init__)
+    16550    0.008    0.000    0.013    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_constants.py:442(__exit__)
+    49078    0.012    0.000    0.012    0.000 {built-in method _thread.get_ident}
+     2774    0.008    0.000    0.012    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\lch\__init__.py:13(lab_to_lch)
+     8171    0.009    0.000    0.012    0.000 C:\Python312\Lib\threading.py:1036(_set_ident)
+     1802    0.005    0.000    0.012    0.000 {method 'all' of 'numpy.generic' objects}
+    40746    0.012    0.000    0.012    0.000 {built-in method time.monotonic}
+     1802    0.007    0.000    0.012    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\shape_base.py:22(atleast_1d)
+    32710    0.011    0.000    0.011    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_constants.py:778(get_protocol)
+      901    0.007    0.000    0.011    0.000 C:\Python312\Lib\concurrent\futures\_base.py:147(__enter__)
+      901    0.003    0.000    0.011    0.000 C:\Python312\Lib\concurrent\futures\_base.py:77(__init__)
+    48981    0.011    0.000    0.011    0.000 {built-in method math.sin}
+    41707    0.010    0.000    0.010    0.000 {method 'append' of 'collections.deque' objects}
+    32832    0.010    0.000    0.010    0.000 {method 'update' of 'dict' objects}
+    26475    0.010    0.000    0.010    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:327(_is_this_color)
+     8171    0.006    0.000    0.010    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_constants.py:558(get_pid)
+    24513    0.010    0.000    0.010    0.000 {method 'rfind' of 'str' objects}
+     8171    0.010    0.000    0.010    0.000 C:\Python312\Lib\threading.py:1354(_make_invoke_excepthook)
+    20288    0.009    0.000    0.009    0.000 {method 'add' of 'set' objects}
+    21779    0.009    0.000    0.009    0.000 {method 'endswith' of 'str' objects}
+    20840    0.009    0.000    0.009    0.000 C:\Python312\Lib\concurrent\futures\_base.py:223(<genexpr>)
+    17621    0.008    0.000    0.008    0.000 {method 'startswith' of 'str' objects}
+    25350    0.008    0.000    0.008    0.000 {method 'remove' of 'collections.deque' objects}
+    21624    0.008    0.000    0.008    0.000 C:\Python312\Lib\concurrent\futures\thread.py:47(__init__)
+     1802    0.008    0.000    0.008    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\lib\_stride_tricks_impl.py:427(_broadcast_shape)
+    21624    0.008    0.000    0.008    0.000 C:\Python312\Lib\concurrent\futures\_base.py:337(_invoke_callbacks)
+    34136    0.008    0.000    0.008    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\__init__.py:203(is_polar)
+     1802    0.001    0.000    0.008    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:1989(place)
+    16342    0.008    0.000    0.008    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\_debug_adapter\pydevd_schema.py:17196(__init__)
+      901    0.002    0.000    0.007    0.000 C:\Python312\Lib\concurrent\futures\_base.py:61(__init__)
+    16436    0.007    0.000    0.007    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_daemon_thread.py:32(py_db)
+     1802    0.004    0.000    0.007    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\_ufunc_config.py:441(__enter__)
+      901    0.005    0.000    0.007    0.000 C:\Python312\Lib\concurrent\futures\_base.py:151(__exit__)
+     1802    0.007    0.000    0.007    0.000 {built-in method numpy._core._multiarray_umath._place}
+    21624    0.007    0.000    0.007    0.000 C:\Python312\Lib\concurrent\futures\_base.py:398(__get_result)
+       52    0.002    0.000    0.007    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd.py:1681(process_internal_commands)
+     1802    0.001    0.000    0.007    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\_methods.py:68(_all)
+     1802    0.005    0.000    0.007    0.000 {built-in method builtins.any}
+      901    0.003    0.000    0.007    0.000 C:\Python312\Lib\threading.py:457(__init__)
+     1537    0.004    0.000    0.006    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\__init__.py:31(hue_index)
+    11645    0.006    0.000    0.006    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\util.py:33(xy_to_xyz)
+      655    0.004    0.000    0.006    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\__init__.py:135(indexes)
+       31    0.000    0.000    0.006    0.000 C:\Python312\Lib\selectors.py:319(select)
+     8171    0.004    0.000    0.006    0.000 C:\Python312\Lib\threading.py:1040(_set_native_id)
+     8171    0.006    0.000    0.006    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_constants.py:793(get_global_debugger)
+     8171    0.005    0.000    0.005    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd_tracing.py:125(_load_python_helper_lib)
+    16342    0.005    0.000    0.005    0.000 {method 'pop' of 'dict' objects}
+      901    0.001    0.000    0.005    0.000 C:\Python312\Lib\concurrent\futures\_base.py:144(__init__)
+    16358    0.005    0.000    0.005    0.000 {method 'join' of 'str' objects}
+    16368    0.005    0.000    0.005    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd.py:1441(dap_messages_listeners)
+    21624    0.005    0.000    0.005    0.000 {method '_is_owned' of '_thread.RLock' objects}
+    25229    0.005    0.000    0.005    0.000 {built-in method nt.fspath}
+    16352    0.005    0.000    0.005    0.000 {method 'popleft' of 'collections.deque' objects}
+      901    0.005    0.000    0.005    0.000 {built-in method builtins.sorted}
+       31    0.000    0.000    0.004    0.000 C:\Python312\Lib\selectors.py:313(_select)
+     3502    0.003    0.000    0.004    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\__init__.py:208(get_channel_index)
+    22618    0.004    0.000    0.004    0.000 {method 'pop' of 'list' objects}
+    12476    0.004    0.000    0.004    0.000 {built-in method math.atan2}
+    23309    0.004    0.000    0.004    0.000 {method 'remove' of 'set' objects}
+    21624    0.004    0.000    0.004    0.000 {method 'remove' of 'list' objects}
+      902    0.003    0.000    0.004    0.000 C:\Python312\Lib\threading.py:627(clear)
+     8705    0.004    0.000    0.004    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_constants.py:626(get_thread_id)
+    16342    0.004    0.000    0.004    0.000 {built-in method builtins.id}
+    16342    0.004    0.000    0.004    0.000 C:\Python312\Lib\threading.py:601(is_set)
+     8171    0.004    0.000    0.004    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydev_bundle\pydev_log.py:216(info)
+      260    0.001    0.000    0.004    0.000 C:\Python312\Lib\ntpath.py:275(dirname)
+        8    0.000    0.000    0.004    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\_reloader.py:65(_find_stat_paths)
+       18    0.000    0.000    0.004    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:1166(filter)
+    21624    0.003    0.000    0.003    0.000 {method 'acquire' of '_thread.RLock' objects}
+       18    0.000    0.000    0.003    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\filters\__init__.py:23(filters)
+     4851    0.002    0.000    0.003    0.000 C:\Python312\Lib\abc.py:117(__instancecheck__)
+     8171    0.003    0.000    0.003    0.000 {built-in method nt.getpid}
+    12785    0.003    0.000    0.003    0.000 {method 'is_dir' of 'nt.DirEntry' objects}
+     8171    0.003    0.000    0.003    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydev_bundle\pydev_monkey.py:1084(__init__)
+     8194    0.003    0.000    0.003    0.000 {method 'lower' of 'str' objects}
+        9    0.000    0.000    0.003    0.000 {method 'update' of 'set' objects}
+       16    0.000    0.000    0.003    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_process_net_command_json.py:128(process_net_command_json)
+     1802    0.001    0.000    0.003    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\_ufunc_config.py:457(__exit__)
+     3607    0.003    0.000    0.003    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+     7208    0.003    0.000    0.003    0.000 {built-in method numpy.array}
+      901    0.003    0.000    0.003    0.000 {built-in method nt.cpu_count}
+    20154    0.003    0.000    0.003    0.000 {built-in method _operator.truediv}
+    11645    0.003    0.000    0.003    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\__init__.py:242(white)
+     8171    0.002    0.000    0.002    0.000 {built-in method sys._getframe}
+    10839    0.002    0.000    0.002    0.000 {method 'replace' of 'str' objects}
+     8171    0.002    0.000    0.002    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydev_bundle\pydev_monkey.py:1242(get_original_start_new_thread)
+       16    0.000    0.000    0.002    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_process_net_command_json.py:271(on_threads_request)
+       16    0.000    0.000    0.002    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_api.py:146(list_threads)
+        8    0.001    0.000    0.002    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\_reloader.py:294(run_step)
+    21624    0.002    0.000    0.002    0.000 {method 'release' of '_thread.RLock' objects}
+     1802    0.002    0.000    0.002    0.000 {built-in method numpy.promote_types}
+       16    0.000    0.000    0.002    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_net_command_factory_json.py:144(make_list_threads_message)
+    14781    0.002    0.000    0.002    0.000 {built-in method _operator.mul}
+     2774    0.002    0.000    0.002    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\util.py:181(constrain_hue)
+     1802    0.002    0.000    0.002    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:346(iterable)
+     8171    0.002    0.000    0.002    0.000 {built-in method _thread.get_native_id}
+      104    0.000    0.000    0.002    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd.py:1533(check_output_redirect)
+    12476    0.002    0.000    0.002    0.000 {built-in method math.degrees}
+       52    0.000    0.000    0.002    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd.py:250(can_exit)
+     1804    0.002    0.000    0.002    0.000 {method 'set' of '_contextvars.ContextVar' objects}
+     1802    0.002    0.000    0.002    0.000 {built-in method numpy.zeros}
+     1804    0.002    0.000    0.002    0.000 {method 'reset' of '_contextvars.ContextVar' objects}
+     8171    0.002    0.000    0.002    0.000 {method 'locked' of '_thread.lock' objects}
+     1802    0.002    0.000    0.002    0.000 {built-in method numpy.asarray}
+     4851    0.001    0.000    0.001    0.000 {built-in method _abc._abc_instancecheck}
+     1802    0.001    0.000    0.001    0.000 {built-in method numpy._core._multiarray_umath._make_extobj}
+     3604    0.001    0.000    0.001    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\lib\_stride_tricks_impl.py:355(<genexpr>)
+     7558    0.001    0.000    0.001    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\__init__.py:225(normalize)
+     3604    0.001    0.000    0.001    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+       52    0.000    0.000    0.001    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd.py:1381(has_user_threads_alive)
+     2119    0.001    0.000    0.001    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\lch\__init__.py:59(is_achromatic)
+     1802    0.001    0.000    0.001    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\_ufunc_config.py:431(__init__)
+     1802    0.001    0.000    0.001    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\scipy\stats\_distn_infrastructure.py:982(_argcheck)
+     1802    0.001    0.000    0.001    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\fromnumeric.py:2127(shape)
+      208    0.001    0.000    0.001    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_io.py:205(redirect_stream_to_pydb_io_messages)
+     1685    0.001    0.000    0.001    0.000 C:\Python312\Lib\concurrent\futures\_base.py:65(add_result)
+       31    0.000    0.000    0.001    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_comm.py:194(_read_line)
+       68    0.001    0.000    0.001    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_utils.py:133(get_non_pydevd_threads)
+     4851    0.001    0.000    0.001    0.000 {built-in method math.exp}
+       18    0.000    0.000    0.001    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\filters\cvd.py:265(filter)
+     1802    0.001    0.000    0.001    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\lib\_stride_tricks_impl.py:30(_maybe_view_as_subclass)
+     1174    0.001    0.000    0.001    0.000 C:\Python312\Lib\ntpath.py:35(_get_bothseps)
+      104    0.000    0.000    0.001    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd.py:2666(_init_stdout_redirect)
+     3620    0.001    0.000    0.001    0.000 {method 'items' of 'dict' objects}
+      107    0.000    0.000    0.001    0.000 C:\Python312\Lib\ntpath.py:596(abspath)
+        6    0.000    0.000    0.001    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\filters\cvd.py:231(brettel)
+        6    0.000    0.000    0.001    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\filters\cvd.py:127(brettel)
+      120    0.001    0.000    0.001    0.000 C:\Python312\Lib\threading.py:1533(enumerate)
+     1802    0.001    0.000    0.001    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\scipy\stats\_distn_infrastructure.py:994(_get_support)
+     3610    0.001    0.000    0.001    0.000 {built-in method numpy.asanyarray}
+     1802    0.001    0.000    0.001    0.000 {method '__exit__' of 'numpy.nditer' objects}
+     1802    0.001    0.000    0.001    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\fromnumeric.py:2491(_any_dispatcher)
+     1802    0.001    0.000    0.001    0.000 <string>:2(_parse_args)
+     1802    0.001    0.000    0.001    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\fromnumeric.py:2123(_shape_dispatcher)
+       31    0.001    0.000    0.001    0.000 {built-in method select.select}
+     1802    0.001    0.000    0.001    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:1985(_place_dispatcher)
+       16    0.000    0.000    0.001    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_comm.py:144(_from_json)
+     1174    0.001    0.000    0.001    0.000 {method 'rstrip' of 'str' objects}
+     1802    0.001    0.000    0.001    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\fromnumeric.py:2606(_all_dispatcher)
+       16    0.000    0.000    0.000    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\_debug_adapter\pydevd_base_schema.py:116(from_json)
+     1802    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\multiarray.py:1153(putmask)
+      557    0.000    0.000    0.000    0.000 {built-in method math.isclose}
+       18    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:549(normalize)
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\wrappers\request.py:542(json)
+      104    0.000    0.000    0.000    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd.py:2670(_init_stderr_redirect)
+     1802    0.000    0.000    0.000    0.000 {built-in method builtins.iter}
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\wrappers\request.py:576(get_json)
+      986    0.000    0.000    0.000    0.000 {method '__exit__' of 'nt.ScandirIterator' objects}
+     1802    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\shape_base.py:18(_atleast_1d_dispatcher)
+     1802    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\lib\_stride_tricks_impl.py:491(_broadcast_arrays_dispatcher)
+       12    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\algebra.py:2461(shape)
+    48/12    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\algebra.py:2433(_shape)
+      107    0.000    0.000    0.000    0.000 C:\Python312\Lib\ntpath.py:564(normpath)
+     1537    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\__init__.py:26(hue_name)
+      850    0.000    0.000    0.000    0.000 {method 'reverse' of 'list' objects}
+        6    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:284(_match)
+      655    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\__init__.py:130(names)
+       16    0.000    0.000    0.000    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\_debug_adapter\pydevd_schema.py:9537(to_dict)
+       12    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\filters\cvd.py:236(vienot)
+       17    0.000    0.000    0.000    0.000 C:\Python312\Lib\json\__init__.py:299(loads)
+      107    0.000    0.000    0.000    0.000 {built-in method nt._getfullpathname}
+       12    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\filters\cvd.py:151(vienot)
+       16    0.000    0.000    0.000    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\_debug_adapter\pydevd_schema.py:18717(to_dict)
+       52    0.000    0.000    0.000    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_comm.py:416(empty)
+        6    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\srgb\css.py:52(match)
+        2    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\fromnumeric.py:3913(std)
+      901    0.000    0.000    0.000    0.000 C:\Python312\Lib\concurrent\futures\_base.py:643(__enter__)
+       15    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\color.py:127(_get_convert_chain)
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\wrappers\request.py:389(get_data)
+       15    0.000    0.000    0.000    0.000 {method 'recv' of '_socket.socket' objects}
+        2    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\_methods.py:225(_std)
+      469    0.000    0.000    0.000    0.000 {method 'clear' of 'list' objects}
+        6    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\css\parse.py:444(parse_css)
+       15    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\convert.py:55(get_convert_chain)
+       17    0.000    0.000    0.000    0.000 C:\Python312\Lib\json\decoder.py:332(decode)
+      104    0.000    0.000    0.000    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd.py:1499(get_internal_queue)
+      586    0.000    0.000    0.000    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydev_bundle\pydev_is_thread_alive.py:9(is_thread_alive)
+      179    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\lch\__init__.py:50(normalize)
+       52    0.000    0.000    0.000    0.000 C:\Python312\Lib\queue.py:97(empty)
+      116    0.000    0.000    0.000    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\_debug_adapter\pydevd_schema.py:13389(update_dict_ids_to_dap)
+        2    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\_methods.py:153(_var)
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\utils.py:94(__get__)
+        2    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\fromnumeric.py:3783(mean)
+       16    0.000    0.000    0.000    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\_debug_adapter\pydevd_base_schema.py:88(from_dict)
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\wrappers\request.py:314(stream)
+        3    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\function_base.py:25(linspace)
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+    36/18    0.000    0.000    0.000    0.000 C:\Python312\Lib\typing.py:3256(__getattribute__)
+      116    0.000    0.000    0.000    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\_debug_adapter\pydevd_schema.py:13376(to_dict)
+      107    0.000    0.000    0.000    0.000 {built-in method nt._path_normpath}
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\sansio\request.py:526(is_json)
+        2    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\_methods.py:119(_mean)
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\sansio\request.py:334(mimetype)
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\wsgi.py:129(get_input_stream)
+      255    0.000    0.000    0.000    0.000 {method 'values' of 'dict' objects}
+      2/1    0.000    0.000    0.000    0.000 {method 'read' of '_io._RawIOBase' objects}
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\sansio\request.py:328(_parse_content_type)
+       15    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\convert.py:15(calc_path_to_xyz)
+      418    0.000    0.000    0.000    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_constants.py:660(__enter__)
+      418    0.000    0.000    0.000    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_constants.py:663(__exit__)
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\flask\json\provider.py:181(loads)
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\wsgi.py:568(readall)
+       17    0.000    0.000    0.000    0.000 C:\Python312\Lib\json\decoder.py:343(raw_decode)
+       18    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\filters\cvd.py:258(get_best_filter)
+       40    0.000    0.000    0.000    0.000 {method 'match' of 're.Pattern' objects}
+      116    0.000    0.000    0.000    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\_debug_adapter\pydevd_schema.py:13358(__init__)
+        6    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\css\parse.py:117(parse_hex)
+      116    0.000    0.000    0.000    0.000 C:\Python312\Lib\threading.py:1180(name)
+      107    0.000    0.000    0.000    0.000 {built-in method sys.audit}
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\wsgi.py:114(get_content_length)
+       16    0.000    0.000    0.000    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_comm.py:147(_on_dict_loaded)
+        2    0.000    0.000    0.000    0.000 C:\Python312\Lib\contextlib.py:132(__enter__)
+       48    0.000    0.000    0.000    0.000 {method 'find' of 'bytes' objects}
+       35    0.000    0.000    0.000    0.000 {method 'startswith' of 'bytes' objects}
+        6    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\css\parse.py:307(tokenize_css)
+       16    0.000    0.000    0.000    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\pydevd_comm.py:173(_read)
+       52    0.000    0.000    0.000    0.000 {method 'keys' of 'dict' objects}
+        4    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\_methods.py:77(_count_reduce_items)
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\sansio\utils.py:140(get_content_length)
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\datastructures\headers.py:84(get)
+       16    0.000    0.000    0.000    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\_debug_adapter\pydevd_schema.py:9510(__init__)
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\gamut\fit_minde_chroma.py:20(calc_epsilon)
+        3    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\local.py:303(__get__)
+        3    0.000    0.000    0.000    0.000 {built-in method numpy.arange}
+       16    0.000    0.000    0.000    0.000 {method 'split' of 'bytes' objects}
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\flask\wrappers.py:55(max_content_length)
+        4    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\_ufunc_config.py:489(_no_nep50_warning)
+       40    0.000    0.000    0.000    0.000 {method 'end' of 're.Match' objects}
+       16    0.000    0.000    0.000    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\_debug_adapter\pydevd_schema.py:9418(__init__)
+       32    0.000    0.000    0.000    0.000 C:\Python312\Lib\socketserver.py:257(service_actions)
+        2    0.000    0.000    0.000    0.000 C:\Python312\Lib\contextlib.py:299(helper)
+        2    0.000    0.000    0.000    0.000 C:\Python312\Lib\contextlib.py:141(__exit__)
+       17    0.000    0.000    0.000    0.000 {method 'decode' of 'bytes' objects}
+       16    0.000    0.000    0.000    0.000 {method 'strip' of 'bytes' objects}
+        9    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\_reloader.py:60(_remove_by_pattern)
+       18    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\css\parse.py:44(norm_hex_channel)
+       18    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\filters\cvd.py:246(select_filter)
+       31    0.000    0.000    0.000    0.000 C:\Python312\Lib\_collections_abc.py:435(__subclasshook__)
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\wsgi.py:520(readinto)
+       16    0.000    0.000    0.000    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\_pydevd_bundle\_debug_adapter\pydevd_schema.py:18706(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Python312\Lib\json\__init__.py:244(detect_encoding)
+       16    0.000    0.000    0.000    0.000 c:\Users\nfkam\.vscode\extensions\ms-python.debugpy-2024.10.0-win32-x64\bundled\libs\debugpy\_vendored\pydevd\pydevd.py:479(is_authenticated)
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\_internal.py:202(_plain_int)
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\datastructures\headers.py:485(__getitem__)
+        3    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\local.py:504(_get_current_object)
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\algebra.py:82(order)
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\http.py:427(parse_options_header)
+        2    0.000    0.000    0.000    0.000 C:\Python312\Lib\contextlib.py:104(__init__)
+        2    0.000    0.000    0.000    0.000 C:\Python312\Lib\typing.py:378(inner)
+       12    0.000    0.000    0.000    0.000 {method 'group' of 're.Match' objects}
+       12    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\coloraide\spaces\__init__.py:279(match)
+        3    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\numeric.py:1937(isscalar)
+        3    0.000    0.000    0.000    0.000 {method 'result_type' of 'numpy._core._multiarray_umath._array_converter' objects}
+        6    0.000    0.000    0.000    0.000 C:\Python312\Lib\_collections_abc.py:341(__subclasshook__)
+        3    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\fromnumeric.py:3571(ndim)
+        3    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.ndarray' objects}
+        3    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\local.py:288(bind_f)
+        1    0.000    0.000    0.000    0.000 {method 'fullmatch' of 're.Pattern' objects}
+        4    0.000    0.000    0.000    0.000 {built-in method numpy.lib.array_utils.normalize_axis_index}
+        1    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\wsgi.py:457(__init__)
+        3    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\werkzeug\wsgi.py:463(is_exhausted)
+        3    0.000    0.000    0.000    0.000 {method 'as_arrays' of 'numpy._core._multiarray_umath._array_converter' objects}
+        3    0.000    0.000    0.000    0.000 {method 'wrap' of 'numpy._core._multiarray_umath._array_converter' objects}
+        1    0.000    0.000    0.000    0.000 {method 'readinto' of '_io.BufferedReader' objects}
+        3    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\fromnumeric.py:3567(_ndim_dispatcher)
+        2    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\fromnumeric.py:3778(_mean_dispatcher)
+        3    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\function_base.py:20(_linspace_dispatcher)
+        1    0.000    0.000    0.000    0.000 {built-in method math.log10}
+        3    0.000    0.000    0.000    0.000 {built-in method _operator.index}
+        3    0.000    0.000    0.000    0.000 {method 'strip' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 c:\Users\nfkam\Documents\GitHub\PortfolioSite\.venv\Lib\site-packages\numpy\_core\fromnumeric.py:3908(_std_dispatcher)
+        3    0.000    0.000    0.000    0.000 {method 'get' of '_contextvars.ContextVar' objects}
+        2    0.000    0.000    0.000    0.000 C:\Python312\Lib\typing.py:2132(cast)
+        1    0.000    0.000    0.000    0.000 {method 'extend' of 'bytearray' objects}
+        1    0.000    0.000    0.000    0.000 {method 'partition' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method math.floor}
+        1    0.000    0.000    0.000    0.000 {method 'upper' of 'str' objects}
+
+
