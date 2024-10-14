@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block site_head %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .color-input {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .remove-color {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+Differentiated Color Picker
+{% endblock %}
+
+{% block body %}
+<div>
+    <h3>Differentiated Color Picker</h3>
+    <div id="color-inputs">
+        <div class="color-input">
+            <input type="color" class="color-value" value="#ff5733" />
+            <button class="remove-color">X</button>
+        </div>
+    </div>
+    <button id="add-color">Add Color</button>
+    <button id="find-color">Find Distinct Color</button>
+    
+    <div id="result" style="margin-top: 20px;"></div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#add-color').click(function() {
+            $('#color-inputs').append(`
+                <div class="color-input">
+                    <input type="color" class="color-value" value="#ffffff" />
+                    <button class="remove-color">X</button>
+                </div>
+            `);
+        });
+
+        $(document).on('click', '.remove-color', function() {
+            $(this).closest('.color-input').remove();
+        });
+
+        $('#find-color').click(function() {
+            const colors = $('.color-value').map(function() {
+                return $(this).val();
+            }).get();
+
+            $.ajax({
+                url: '/tools_api/color_picker',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ colors: colors }),
+                success: function(response) {
+                    $('#result').html(`
+                        <h4>Best Distinct Color:</h4>
+                        <div style="background-color: oklch(${response.color.join(' ')}); width: 100px; height: 100px;"></div>
+                        <p>Fitness: ${response.fitness}</p>
+                    `);
+                },
+                error: function() {
+                    $('#result').text('Error finding a distinct color.');
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
