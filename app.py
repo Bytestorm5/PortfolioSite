@@ -67,19 +67,27 @@ from scipy.stats import norm
 def color_picker_api():
     colors_raw = request.json['colors']
     colors = [Color(c).convert('oklch') for c in colors_raw]
+    fcolors: dict[str, list] = {None: colors}
     
     L_mean = np.mean([c._coords[0] for c in colors])
     C_mean = np.mean([c._coords[1] for c in colors])
     L_std = np.std([c._coords[0] for c in colors])
     C_std = np.std([c._coords[1] for c in colors])
     
-    for i in range(len(colors)):
-        for filter in ['protan', 'deutan', 'tritan']:
-            colors.append(colors[i].filter(filter).fit('srgb'))
+    for filter in ['protan', 'deutan', 'tritan']:
+        fcolors[filter] = []
+        for i in range(len(colors)):
+            fcolors[filter].append(colors[i].filter(filter).fit('srgb'))
     
     def objective(LCH):
         test_color = Color('oklch', LCH).fit('srgb')
-        diff = min([test_color.delta_e(c, method='ok') for c in colors])
+        diff = 9999999
+        for k in fcolors.keys():
+            if k == None:
+                diff = min([diff] + [test_color.delta_e(c, method='ok') for c in fcolors[k]])
+            else:
+                ftest = test_color.filter(k)
+                diff = min([diff] + [ftest.delta_e(c, method='ok') for c in fcolors[k]])
         
         L_prob = norm.pdf(LCH[0], L_mean, L_std)
         C_prob = norm.pdf(LCH[1], C_mean, C_std)
