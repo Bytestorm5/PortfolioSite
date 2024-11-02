@@ -64,7 +64,6 @@ import numpy as np
 from scipy.stats import norm
 
 @app.route('/tools_api/color_picker', methods = ["POST"])
-@profile
 def color_picker_api():
     colors_raw = request.json['colors']
     colors = [Color(c).convert('oklch') for c in colors_raw]
@@ -97,9 +96,11 @@ def color_picker_api():
     )
     
     best_color = max(search_space, key=objective)
+    best_color_obj = Color('oklch', best_color)
     return {
         "color": best_color,
-        "fitness": objective(best_color)
+        "color_hex": best_color_obj.convert('srgb').to_string(hex=True),
+        "fitness": f"{objective(best_color):.2f}"
     }
 
 if __name__ == '__main__':

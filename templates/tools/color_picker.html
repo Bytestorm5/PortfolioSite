@@ -15,7 +15,6 @@
         }
         .remove-color {
             margin-left: 10px;
-            color: red;
             cursor: pointer;
         }
     </style>
@@ -29,10 +28,6 @@ Differentiated Color Picker
 <div>
     <h3>Differentiated Color Picker</h3>
     <div id="color-inputs">
-        <div class="color-input">
-            <input type="text" class="color-value" value="#ff5733" />
-            <button class="remove-color">Remove</button>
-        </div>
     </div>
     <button id="add-color">Add Color</button>
     <button id="find-color">Find Distinct Color</button>
@@ -43,26 +38,27 @@ Differentiated Color Picker
 <script>
     $(document).ready(function() {
         $('#add-color').click(function() {
+            // Append the color input div
             $('#color-inputs').append(`
                 <div class="color-input">
                     <input type="text" class="color-value" value="#ffffff" />
-                    <button class="remove-color">Remove</button>
+                    <button class="remove-color">X</button>
                 </div>
             `);
-        });
-
-        $('#color-inputs').on('focus', '.color-value', function() {
-            $(this).spectrum({
+        
+            // Initialize spectrum on the newly added color input
+            $('#color-inputs .color-value').last().spectrum({
                 showInput: true,
                 allowEmpty: true,
                 showInitial: true,
                 preferredFormat: "hex",
                 hideAfterPaletteSelect: true,
                 change: function(color) {
-                    $(this).val(color.toHexString());
+                    $(this).val(color ? color.toHexString() : "");
                 }
             });
         });
+        
 
         $(document).on('click', '.remove-color', function() {
             $(this).closest('.color-input').remove();
@@ -72,6 +68,10 @@ Differentiated Color Picker
             const colors = $('.color-value').map(function() {
                 return $(this).val();
             }).get();
+            
+            $('#result').html(`
+                <h4>Loading...</h4>
+            `);
 
             $.ajax({
                 url: '/tools_api/color_picker',
@@ -80,7 +80,7 @@ Differentiated Color Picker
                 data: JSON.stringify({ colors: colors }),
                 success: function(response) {
                     $('#result').html(`
-                        <h4>Best Distinct Color:</h4>
+                        <h4>Best Distinct Color: ${response.color_hex}</h4>
                         <div style="background-color: oklch(${response.color.join(' ')}); width: 100px; height: 100px;"></div>
                         <p>Fitness: ${response.fitness}</p>
                     `);
