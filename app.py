@@ -71,8 +71,8 @@ def color_picker_api():
     
     L_mean = np.mean([c._coords[0] for c in colors])
     C_mean = np.mean([c._coords[1] for c in colors])
-    L_std = np.std([c._coords[0] for c in colors])
-    C_std = np.std([c._coords[1] for c in colors])
+    L_std = np.std([c._coords[0] for c in colors]) or 1e-5
+    C_std = np.std([c._coords[1] for c in colors]) or 1e-5
     max_L_prob = norm.pdf(L_mean, L_mean, L_std)
     max_C_prob = norm.pdf(C_mean, C_mean, C_std)
     
@@ -97,6 +97,7 @@ def color_picker_api():
         C_prob = abs(norm.pdf(LCH[1], C_mean, C_std)) / max_C_prob
 
         weight = L_prob * C_prob
+        weight = np.exp(-np.power(5*(weight - 0.5), 2))
 
         return diff*weight
     
