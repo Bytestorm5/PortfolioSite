@@ -81,8 +81,10 @@ Differentiated Color Picker
                 success: function(response) {
                     $('#result').html(`
                         <h4>Best Distinct Color: ${response.color_hex}</h4>
-                        <div style="background-color: oklch(${response.color.join(' ')}); width: 100px; height: 100px;"></div>
+                        <div style="background-color: ${response.color}; width: 100px; height: 100px;"></div>
                         <p>Fitness: ${response.fitness}</p>
+                        <p>Delta E: ${response.pure_fitness}</p>
+                        <p>Similarity: ${response.prob_fitness}</p>
                     `);
                 },
                 error: function() {
