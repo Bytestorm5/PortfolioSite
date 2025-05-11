@@ -45,7 +45,7 @@ def api():
             # Compute delta E using CIEDE2000
             delta_e = c0.delta_e(c1, method='2000')
             # Threshold below which colors are considered the same
-            threshold = float(os.environ.get('COLOR_SIMILARITY_THRESHOLD', 1.0))
+            threshold = float(os.environ.get('COLOR_SIMILARITY_THRESHOLD', 2.0))
             true_same = (delta_e <= threshold)
             true_result = 'same' if true_same else 'different'
         else:
@@ -54,6 +54,31 @@ def api():
         # Fallback to exact match of string values
         true_result = 'same' if len(colors_list) >= 2 and colors_list[0] == colors_list[1] else 'different'
     correct = (result == true_result)
+    # Compute analysis under different colorblind filters
+    analysis = {}
+    try:
+        if len(colors_list) >= 2:
+            for filt in (None, 'protan', 'deutan', 'tritan'):
+                # Parse base colors
+                c0 = Color(colors_list[0])
+                c1 = Color(colors_list[1])
+                if filt:
+                    c0 = c0.filter(filt)
+                    c1 = c1.filter(filt)
+                # Convert to displayable sRGB and fit gama
+                c0s = c0.convert('srgb').fit('srgb')
+                c1s = c1.convert('srgb').fit('srgb')
+                hex0 = c0s.to_string(hex=True)
+                hex1 = c1s.to_string(hex=True)
+                # Compute delta E in Lab
+                d0 = c0.convert('lab')
+                d1 = c1.convert('lab')
+                de_val = d0.delta_e(d1, method='2000')
+                key = filt or 'normal'
+                analysis[key] = { 'colors': [hex0, hex1], 'delta_e': de_val }
+    except Exception:
+        # If analysis fails, leave empty or minimal
+        pass
     ip = request.remote_addr
     timestamp = datetime.utcnow()
     doc = {
@@ -67,10 +92,16 @@ def api():
         'screen': screen,
         'delta_e': delta_e,
         'response_time_ms': response_time_ms,
+        'analysis': analysis,
         'ip': ip,
         'timestamp': timestamp
     }
     collection = get_collection()
     collection.insert_one(doc)
     # Return feedback
-    return {'status': 'ok', 'correct': correct, 'trueResult': true_result}
+    return {
+        'status': 'ok',
+        'correct': correct,
+        'trueResult': true_result,
+        'analysis': analysis
+    }

@@ -9,13 +9,21 @@
 {% block body %}
 <h1>Color Similarity Test</h1>
 <p>Are these two colors the same or different?</p>
-<div id="colors" style="display: flex; margin: 20px 0; width: 400px; height: 250px; justify-content: center; align-items: center;">
+<div id="main-wrapper" style="display: flex; gap: 20px;">
+  <div id="interactive" style="flex: 1;">
+    <div id="colors" style="display: flex; margin: 20px 0; width: 400px; height: 250px; justify-content: center; align-items: center;">
   <div id="color1" style="width: 150px; height: 150px; margin-right: 20px;"></div>
   <div id="color2" style="width: 150px; height: 150px;"></div>
 </div>
 <button id="same">Same</button>
 <button id="different">Different</button>
 <div id="feedback" style="margin-top: 10px; font-weight: bold;"></div>
+    </div> <!-- end interactive -->
+  <div id="analysis" style="flex: 1;">
+    <h3>Last Trial Analysis</h3>
+    <div id="analysis-content"></div>
+  </div>
+</div> <!-- end main-wrapper -->
 
 <script>
 // Retrieve or create persistent user ID
@@ -151,6 +159,20 @@ function submitResult(choice) {
       feedbackEl.textContent = `Incorrect. Actual answer: ${data.trueResult === 'same' ? 'Same' : 'Different'}`;
       feedbackEl.style.color = '#f88';
     }
+    // Render analysis of previous trial
+    const analysisData = data.analysis || {};
+    const analysisEl = document.getElementById('analysis-content');
+    let table = '<table border="1" cellpadding="4" cellspacing="0"><tr><th>Filter</th><th>Color 1</th><th>Color 2</th><th>ΔE</th></tr>';
+    ['normal', 'protan', 'deutan', 'tritan'].forEach(key => {
+      if (analysisData[key]) {
+        table += `<tr><td>${key}</td>` +
+                 `<td style="background:${analysisData[key].colors[0]};width:30px;height:30px;"></td>` +
+                 `<td style="background:${analysisData[key].colors[1]};width:30px;height:30px;"></td>` +
+                 `<td>${analysisData[key].delta_e.toFixed(2)}</td></tr>`;
+      }
+    });
+    table += '</table>';
+    analysisEl.innerHTML = table;
     // Increase difficulty for next round
     testCount++;
     // Prepare next trial (layout, background, colors)
