@@ -77,7 +77,7 @@ Differentiated Color Picker
             `);
 
             $.ajax({
-                url: '/tools_api/color_picker',
+                url: "{{ url_for('color_picker.api') }}",
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({ colors: colors }),
