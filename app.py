@@ -3,6 +3,10 @@ from werkzeug import exceptions as HTTPError
 import platform
 from nb import load_nb, get_nbs, get_nb_path
 from markupsafe import escape
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -56,9 +60,11 @@ def tools():
 # Register tool blueprints
 from tools.color_picker import bp as color_picker_bp
 from tools.righthand_regex import bp as righthand_regex_bp
+from tools.color_similarity import bp as color_similarity_bp
 
 app.register_blueprint(color_picker_bp, url_prefix='/tool/color_picker')
 app.register_blueprint(righthand_regex_bp, url_prefix='/tool/righthand_regex')
+app.register_blueprint(color_similarity_bp, url_prefix='/tool/color_similarity')
 
 if __name__ == '__main__':
     if platform.system() == 'Windows':

@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block site_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block title %}Color Similarity Test{% endblock %}
+
+{% block body %}
+<h1>Color Similarity Test</h1>
+<p>Are these two colors the same or different?</p>
+<div id="colors" style="display: flex; margin: 20px 0;">
+  <div id="color1" style="width: 150px; height: 150px; margin-right: 20px; border: 1px solid #fff;"></div>
+  <div id="color2" style="width: 150px; height: 150px; border: 1px solid #fff;"></div>
+</div>
+<button id="same">Same</button>
+<button id="different">Different</button>
+<div id="feedback" style="margin-top: 10px; font-weight: bold;"></div>
+
+<script>
+// Dynamic difficulty parameters
+const totalTests = {{ total_tests | default(0) }};
+let testCount = totalTests;
+const baseMargin = 20;  // initial max deviation for similar colors
+const maxTests = 20;  // tests until margin reaches zero
+
+// Expands hue, saturation, lightness ranges for challenge
+function getRandomHSL() {
+  const h = Math.random() * 360;
+  const s = Math.random() * 100;
+  const l = Math.random() * 100;
+  return { h, s, l };
+}
+
+function hslToString(c) {
+  return `hsl(${Math.round(c.h)}, ${Math.round(c.s)}%, ${Math.round(c.l)}%)`;
+}
+
+function generateColors() {
+  const p = Math.random();
+  let c1 = getRandomHSL();
+  let c2;
+  if (p < 0.2) {
+    // Exact same color
+    c2 = { ...c1 };
+  } else if (p < 0.4) {
+    // Completely random independent colors
+    c1 = getRandomHSL();
+    c2 = getRandomHSL();
+  } else {
+    // Similar but not identical, margin shrinks over time
+    const margin = Math.max(5, baseMargin - (testCount * baseMargin) / maxTests);
+    if (margin <= 0) {
+      c2 = { ...c1 };
+    } else {
+      c2 = {
+        h: (c1.h + (Math.random() * 2 * margin - margin) + 360) % 360,
+        s: Math.min(100, Math.max(0, c1.s + (Math.random() * 2 * margin - margin))),
+        l: Math.min(100, Math.max(0, c1.l + (Math.random() * 2 * margin - margin)))
+      };
+    }
+  }
+  return [hslToString(c1), hslToString(c2)];
+}
+
+let colors = generateColors();
+document.getElementById('color1').style.background = colors[0];
+document.getElementById('color2').style.background = colors[1];
+
+function submitResult(choice) {
+  fetch("{{ url_for('color_similarity.api') }}", {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ colors: colors, result: choice })
+  })
+  .then(res => res.json())
+  .then(data => {
+    const feedbackEl = document.getElementById('feedback');
+    if (data.correct) {
+      feedbackEl.textContent = 'Correct!';
+      feedbackEl.style.color = '#8f8';
+    } else {
+      feedbackEl.textContent = `Incorrect. Actual answer: ${data.trueResult === 'same' ? 'Same' : 'Different'}`;
+      feedbackEl.style.color = '#f88';
+    }
+    // Increase difficulty for next round
+    testCount++;
+    // Show next colors
+    colors = generateColors();
+    document.getElementById('color1').style.background = colors[0];
+    document.getElementById('color2').style.background = colors[1];
+  })
+  .catch(console.error);
+}
+
+document.getElementById('same').addEventListener('click', () => submitResult('same'));
+document.getElementById('different').addEventListener('click', () => submitResult('different'));
+</script>
+{% endblock %}
