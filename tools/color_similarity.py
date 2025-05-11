@@ -19,10 +19,7 @@ def get_collection():
 
 @bp.route('/', methods=['GET'])
 def index():
-    # Compute total tests so far for dynamic difficulty
-    collection = get_collection()
-    total_tests = collection.count_documents({})
-    return render_template('tools/color_similarity.html', total_tests=total_tests)
+    return render_template('tools/color_similarity.html')
 
 @bp.route('/api', methods=['POST'])
 def api():
