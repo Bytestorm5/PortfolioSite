@@ -9,6 +9,7 @@
 {% block body %}
 <h1>Color Similarity Test</h1>
 <p>Are these two colors the same or different?</p>
+<p>NOTE: If your browser has a "Force Dark Mode" feature enabled, that will likely break this!</p>
 <div id="main-wrapper" style="display: flex; gap: 20px;">
   <div id="interactive" style="flex: 1;">
     <div id="colors" style="display: flex; margin: 20px 0; width: 400px; height: 250px; justify-content: center; align-items: center;">
@@ -26,20 +27,18 @@
 </div> <!-- end main-wrapper -->
 
 <script>
-// Retrieve or create persistent user ID
+
 let userId = localStorage.getItem('ka_portfolio_uid');
 if (!userId) {
   userId = crypto.randomUUID();
   localStorage.setItem('ka_portfolio_uid', userId);
 }
 
-// Dynamic difficulty parameters
 const totalTests = {{ total_tests | default(0) }};
 let testCount = totalTests;
-const baseMargin = 20;    // initial max deviation for similar colors
-const maxTests = 1000;    // trials until margin reaches zero
+const baseMargin = 20;
+const maxTests = 1000;
 
-// Utility: expands hue, saturation, lightness ranges for challenge
 function getRandomHSL() {
   const h = Math.random() * 360;
   const s = Math.random() * 100;
@@ -78,24 +77,18 @@ function generateColors() {
   return [hslToString(c1), hslToString(c2)];
 }
 
-// State for each trial: layout ('joint','disjoint','text'), background, colors array
 let layoutType, backgroundType, colors;
-// Track response start time
 let startTime;
-// Advance to next trial: picks layout, background, colors and applies to DOM
-// Advance to next trial: picks layout, background, colors and applies to DOM
 function nextTrial() {
-  // Pick layout and background
   layoutType = ['joint', 'disjoint', 'text'][Math.floor(Math.random() * 3)];
   backgroundType = ['black', 'white', 'transparent'][Math.floor(Math.random() * 3)];
-  // Pick colors
   colors = generateColors();
   // Apply background to the color container only
   const container = document.getElementById('colors');
   if (backgroundType === 'black') container.style.backgroundColor = 'black';
   else if (backgroundType === 'white') container.style.backgroundColor = 'white';
   else container.style.backgroundColor = '';
-  // Render layout
+
   const box1 = document.getElementById('color1');
   const box2 = document.getElementById('color2');
   // Reset styles
@@ -106,7 +99,7 @@ function nextTrial() {
     b.innerHTML = '';
   });
   if (layoutType === 'text') {
-    // Show text blocks
+    // Text
     box1.style.color = colors[0];
     box2.style.color = colors[1];
     box1.style.fontFamily = 'Verdana, sans-serif';
@@ -115,7 +108,7 @@ function nextTrial() {
     box2.innerText = 'Consectetur adipiscing elit.';
     box1.style.marginRight = '20px';
   } else {
-    // Show colored boxes
+    // Colored boxes
     box1.style.backgroundColor = colors[0];
     box2.style.backgroundColor = colors[1];
     box1.style.marginRight = (layoutType === 'joint' ? '0' : '20px');
@@ -123,7 +116,6 @@ function nextTrial() {
 }
 // Start first trial
 nextTrial();
-// Record the time at which the trial started
 startTime = performance.now();
 
 function submitResult(choice) {
@@ -134,7 +126,6 @@ function submitResult(choice) {
     colorDepth: window.screen.colorDepth,
     pixelRatio: window.devicePixelRatio
   };
-  // Compute response time
   const responseTimeMs = performance.now() - startTime;
   fetch("{{ url_for('color_similarity.api') }}", {
     method: 'POST',
@@ -173,9 +164,7 @@ function submitResult(choice) {
     });
     table += '</table>';
     analysisEl.innerHTML = table;
-    // Increase difficulty for next round
     testCount++;
-    // Prepare next trial (layout, background, colors)
     nextTrial();
   })
   .catch(console.error);
