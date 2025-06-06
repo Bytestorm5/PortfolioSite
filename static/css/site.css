@@ -1,0 +1,8 @@
+body {
+    padding-bottom: 40px;
+}
+.notebook {
+    background: white;
+    color: black;
+    padding: 1rem;
+}

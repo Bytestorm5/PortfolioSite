@@ -5,7 +5,7 @@ import itertools
 import numpy as np
 from scipy.stats import norm
 
-bp = Blueprint('color_picker', __name__)
+bp = Blueprint('color_picker', __name__, template_folder='../templates')
 
 @bp.route('/', methods=['GET'])
 def index():

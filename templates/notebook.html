@@ -1,29 +1,5 @@
 {% extends "base.html" %}
-
-{% block site_head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/notebook.css')}}">
-{% endblock %}
-
-{% block title %}
-Kamil Arif
-{% endblock %}
-
+{% block title %}Notebook{% endblock %}
 {% block body %}
-<a class='notebook_download_link'>Want to try this notebook yourself? Click here to download!</a>
- 
-
-{{ notebook | safe }}
-
-<a class='notebook_download_link'>Want to try this notebook yourself? Click here to download!</a>
-
-<link rel="stylesheet" href="{{ url_for('static', filename='css/notebook.css')}}">
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var download_links = document.querySelectorAll('.notebook_download_link');
-        download_links.forEach(function(link) {
-            link.href = "/download_notebook/"+window.location.pathname.split('/')[2] 
-        })
-    })
-</script>
+<div class="notebook">{{ notebook|safe }}</div>
 {% endblock %}
