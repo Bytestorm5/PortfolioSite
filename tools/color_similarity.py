@@ -5,7 +5,7 @@ from pymongo import MongoClient
 from datetime import datetime
 from coloraide import Color
 
-bp = Blueprint('color_similarity', __name__)
+bp = Blueprint('color_similarity', __name__, template_folder='../templates')
 
 def get_collection():
     uri = os.environ.get('MONGO_URI')

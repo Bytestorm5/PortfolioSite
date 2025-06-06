@@ -3,7 +3,7 @@ from werkzeug import exceptions as HTTPError
 from markupsafe import escape
 from nb import load_nb, get_nbs, get_nb_path
 
-main_bp = Blueprint('main', __name__)
+main_bp = Blueprint('main', __name__, template_folder='../templates')
 
 @main_bp.route('/')
 def index():
