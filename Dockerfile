@@ -20,4 +20,5 @@ USER appuser
 ENV PORT=80 HOST=0.0.0.0
 EXPOSE 80
 
-CMD ["python", "app.py"]
+# CMD ["python", "app.py"]
+CMD ["gunicorn", "-k", "gthread", "--workers", "2", "--threads", "4", "--timeout", "60", "--bind", "0.0.0.0:80", "wsgi:app"]
