@@ -6,38 +6,20 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>{% block title%}{% endblock %}</title>
 
-        <style>
-            body {
-                background-color: rgb(46, 46, 46);
-                color:white;
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-            }
-        </style>
-
         <link rel="preload" href="{{ url_for('static', filename='css/base.css')}}" as="style" onload="this.rel='stylesheet'">
         {% block site_head %}{% endblock %}
     </head>
     <body>
-    <div class="site-body">
         <div class="site-header">
             <a href="\"><p>Home</p></a>
-            <a href="\projects"><p>Projects</p></a>     
-            <a href="\tools"><p>Tools</p></a>    
-            <a href="\blog"><p>Blog</p></a>
+            <a href="https://kamilarif.substack.com/"><p>Blog</p></a>
             <a href="\contact"><p>Contact</p></a>
-        </div>
-        <div class="sidebar-left">
-            {% block sidebar_left %}{% endblock %}    
         </div>
         <div class="site-body">
             {% block body %}{% endblock %}
         </div>
-        <div class="sidebar-right"> 
-            {% block sidebar_right %}{% endblock %}  
-        </div>
         <div class="site-footer">
             Last Updated: 9/26/2025
         </div>        
-    </div> 
     </body>
 </html>
