@@ -8,98 +8,213 @@
 Kamil Arif
 {% endblock %}
 
+
 {% block body %}
-<h1>Hi, I'm Kamil</h1>
-<p>and this is my portfolio and/or website I throw cool things onto.</p>
-<p>I have a B.S. in Data Science from NJIT, and I'm aiming to build a career in AI/ML.</p>
-<div class='row-section'>
-    <div>
-        <b>Languages</b>
-        <ul>
-            <li>Python</li>
-            <li>Typescript/Javascript</li>
-            <li>C# <span class='has-tooltip' title="This was the first real programming language I learned!">!</span></li>
-            <li>C, C++</li>
-            <li>Java</li>
-        </ul>
-    </div>
-    <div>
-        <b>Databases</b>
-        <ul>
-            <li>MongoDB</li>
-            <li>SQL (MS & Oracle)</li>
-            <li>PostgreSQL</li>
-        </ul>
-    </div>
-    <div>
-        <b>Tools</b>
-        <ul>
-            <li>GitHub</li>
-            <li><a href="https://www.cvat.ai/">CVAT</a> <span class='has-tooltip' title="To this day I have an evisceral reaction to stock images of kitchens.">!</span></li>
-            <li>AWS</li>
-            <li>DigitalOcean <span class='has-tooltip' title="That's what this site is running on!">!</span></li>
-            <li>Unity</li>         
-            <li>Databricks</li>   
-        </ul>
-    </div>
-    <div>
-        <b>Libraries</b>
-        <ul>
-            <li>Keras, PyTorch</li>
-            <li>React, Node.js</li>
-            <li>Flask <span class='has-tooltip' title="That's what this site is built on!">!</span></li>
-            <li>Scikit & co.</li>
-            <li><a href="https://plotly.com/dash/">Dash</a></li>
-            <li>PySpark</li>
-        </ul>
-    </div>
-</div>
-<h2>Jobs</h2>
-<div class='row-section'>
-    <div>
-        <h3>AT&T; Intern</h3>
-        <b>Full-time; Jun 2024 - Aug 2024</b>
-        <blockquote>
-            <p>I worked on an IP Reallocation algorithm to extract the largest possible IP blocks from AT&T's IPv4 address space, by "moving" customer IPs from one location to another. By arranging blocks such that the largest amount of unused IPs are all in the same spot, we are able to allocate them out more easily when we need them, or sell them in bulk if extra funds are needed. The wrinkle here is that every movement of IP addresses has to be done by another team- so we need to minimize the amount of "moves" we are making to save man-hours spent in reallocation efforts, and more practically to save them a headache or three.</p>
-            <p>All things considered, I was able to generate moves to empty out 6 /16 blocks, which is 6 sets of 65,356 IP Addresses. Even though we have not taken a single IP address from a customer nor allocated any new ones, this reorganization of IPs <b>generated ~$9M in business value.</b> This is because the per-IP value of each IP address increases if part of a larger whole- 2 free IPs together is inherently worth less than 65K IPs together. We can calculate the difference in the value of all IPs affected before and after based on some internal estimates of per-IP value.</p>
-            <a href="{{ url_for('att_s24')}}">See More</a>
-        </blockquote>
-    </div>
-</div>
-<div class='row-section'>
-    <div>
-        <h3>NJIT; Grader</h3>
-        <b>Part-time; Jan 2023 - May 2024</b>
-        <blockquote>
-            <p>I worked as a grader for two classes at NJIT, both of which covered Machine Learning concepts in depth, with rigorous course material & real-world projects. I've graded for a total of about 228 students over 3 semesters, from Spring '23 to Spring '24.</p>
-            <p>In my time as a grader I've pushed for a variety of improvements that helped make the class more useful to students, and enabled the class to scale better with the amount of students it has to host.</p>
-            <p>One benefit of working as a grader is that you have to learn how to tell someone they're wrong without making them angry (and dealing with it when they do). I like to think I've done a decent job of that.</p>
-        </blockquote>
-    </div>
-</div>
-<div class='row-section'>
-    <div>
-        <h3>CDx Diagnostics; ML Intern</h3>
-        <b>Part-time; Sept 2022 - Jan 2023</b>
-        <blockquote>
-            <p>At CDx, I worked on an Image Classification pipeline that could differentiate cancerous cells from debris and other such things on a microscope slide. I ended up working on every part of the process except the final integration, from extracting images from the company's DB to training the model.</p>
-            <p>The model itself was built on the ResNet-50 architecture using Keras, starting from ImageNet weights and fine-tuned from there. The model was decently performant (just under 90% accuracy) considering that the data wasn't the cleanest, and I had yet to learn about <a href="https://thecleverprogrammer.com/2021/04/25/class-balancing-in-machine-learning/">class balancing</a>.</p>
-        </blockquote>
-        
-    </div>
-</div>
-<h2>Misc.</h2>
-(If you're looking for projects, they have a <a href="{{ url_for('projects') }}">dedicated page</a>)
-<h3>Langchain <span class='code-text'>as_retriever()</span> Documentation</h3>
-<blockquote>
-    <p>I was trying to filter the documents that LangChain feeds to my LLM, and eventually figured it out. I realized this wasn't written in the documentation so I made a PR to explain the filtering functionality in more detail, along with a <i>(in hindsight, not amazing)</i> suggestion for a change to the actual function.</p>
-    <p>I think it got rewritten at some point, because I can't find it now- LangChain is constantly changing so I'm not too surprised by that. But I'm still on the contributor list!</p>
-    <a href="https://github.com/langchain-ai/langchain/pull/8803">https://github.com/langchain-ai/langchain/pull/8803</a>
-</blockquote>
-<h3>CVAT Installation Guide Contribution</h3>
-<blockquote>
-    <p>I'm the reason there's a working <a href="https://opencv.github.io/cvat/docs/administration/basics/installation/#windows-10">guide</a> to install CVAT in Windows! This was the first PR I made to a public repo and I didn't get yelled at, so I take that as a win!</p>
-    <p>The issue was basically that CVAT was designed for Linux, but the Windows installation instructed users to install it using Git Bash as a stand-in for Linux- which wasn't ideal, but it'd work if you were just using the basic functionalities of CVAT. However for my project I wasn't; and due to an issue in one of CVAT's dependencies, it would actually break on Windows. So I submitted a PR to instruct users to install CVAT on WSL2 instead, which was probably the better approach regardless.</p>
-    <a href="https://github.com/opencv/cvat/pull/5558">https://github.com/opencv/cvat/pull/5558</a>
-</blockquote>
+<section class="primary">
+  <h1>Kamil Arif.</h1>
+
+  <p class="tagline">
+    Need
+    <span class="rotator" aria-live="polite" role="status">
+      <span class="rotator__track">
+        <span class="rotator__item">an End-to-End CV pipeline?</span>
+        <span class="rotator__item">an Agentic LLM integration?</span>
+        <span class="rotator__item">custom ML architectures?</span>
+      </span>
+    </span>
+  </p>  
+  <div class="two-col-container">
+      <div class="card-column">
+        <h2>Experience</h2>
+        <div class="card card-att">
+          <div class="card-title-row">
+            <b><img class="icon" src="{{ url_for('static', filename='assets/icons/att.svg') }}" alt="" /> AT&T- Sr. Specialist MTS | Artemis Network Planning</b>
+            <span class="card-dates"><time datetime="2025-05">May 2025</time> &mdash; Present</span>
+          </div>
+          <p>Developed algorithms to optimize AT&T's L2/L3 Network Topology across the US, optimizing for cost without compromising on latency agreements.</p>
+          
+        </div>
+        <div class="card card-att">
+          <div class="card-title-row">
+            <b><img class="icon" src="{{ url_for('static', filename='assets/icons/att.svg') }}" alt="" /> AT&T- TDP Internship & Full-Time | IPSEA</b>
+            <span class="card-dates"><time datetime="2024-07">Jul 2024</time> &mdash; <time datetime="2024-08">Aug 2024</time>, <time datetime="2025-01">Jan 2025</time> &mdash; <time datetime="2025-05">May 2025</time></span>
+          </div>
+          <p>Developed an algorithm to reorganize AT&T's IP Address Space more efficiently, generating $9M in estimated value. Also worked on an Anomaly Detection Model to identify failures in DNS Servers.</p>
+          
+        </div>
+        <div class="text-divider" role="separator" aria-label="Graduated w/ BS in Data Sci">
+          <span>Graduated w/ BS in Data Sci - Dec 2024</span>
+        </div>
+        <div class="card card-njit">
+          <div class="card-title-row">
+            <b><img class="icon" src="{{ url_for('static', filename='assets/icons/njit.png') }}" alt="" /> NJIT- Grader | CS 370 Intro to AI</b>
+            <span class="card-dates"><time datetime="2023-01">Jan 2023</time> &mdash; <time datetime="2024-06">Jun 2024</time></span>
+          </div>
+          <p>Grader for a course centered around Data Mining and Machine Learning. Graded for a total of 228 students over the course of 3 semesters. Took an active role in helping students learn from mistakes and build a strong intuition for AI/ML Concepts.</p>
+          
+        </div>
+        <div class="card card-cdx">
+          <div class="card-title-row">
+            <b><img class="icon" src="{{ url_for('static', filename='assets/icons/cdx.png') }}" alt="" /> CDx Diagnostics- Intern | Cancer Cell Classification</b>
+            <span class="card-dates"><time datetime="2022-09">Sep 2022</time> &mdash; <time datetime="2023-01">Jan 2023</time></span>
+          </div>
+          <p>Trained a ResNet-50 CNN to differentiate cancerous cells from debris in dyed microscope slides. Was responsible for data collection, annotation, training, and testing.</p>
+          
+        </div>
+      </div>
+      <div class="card-column">
+        <h2>Projects</h2>
+        <div class="card card-njit">
+          <div class="card-title-row">
+            <b><img class="icon" src="{{ url_for('static', filename='assets/icons/njit.png') }}" alt="" /> ML Model Topology Research</b>
+            <span class="card-dates"><time datetime="2024-09">Sep 2024</time> &mdash; <time datetime="2024-12">Dec 2025</time></span>
+          </div>
+          <p>Implemented & Replicated results of <a href="https://arxiv.org/abs/2004.06093">"Topology of Deep Neural Networks"</a> and <a href="https://arxiv.org/abs/1902.01996">"Are All Layers Created Equal?"</a> as part of a larger independent study on introducing more complex activations into ML models.</p>
+          
+        </div>
+        <div class="card card-njit">
+          <div class="card-title-row">
+            <b><img class="icon" src="{{ url_for('static', filename='assets/icons/njit.png') }}" alt="" /> NJIT Schedule Builder & Course Analysis</b>
+            <span class="card-dates"><time datetime="2024-01">Jan 2024</time> &mdash; <time datetime="2024-12">Dec 2025</time></span>
+          </div>
+          <p>Contributed to a student project aimed at building a better schedule builder site for NJIT. Implemented Data Ingestion pipelines and performed a variety of analyses on NJIT course curricula and structure. Reverse-engineered Ellucian Scribe Language.</p>
+          
+        </div>
+        <div class="card card-njit">
+          <div class="card-title-row">
+            <b><img class="icon" src="{{ url_for('static', filename='assets/icons/njit.png') }}" alt="" /> Back2GPT</b>
+            <span class="card-dates"><time datetime="2023-05">May 2023</time> &mdash; <time datetime="2023-12">Dec 2023</time></span>
+          </div>
+          <p>Built a LLM Chatbot to answer questions specific to the class material and related topics. Involved mining data from approved sources and organizing them to allow for reasonable & meaningful references. Used Markprompt for data processing and model access. Currently deployed as a Discord bot in the official class server.</p>
+          
+        </div>
+        <div class="card card-personal">
+          <div class="card-title-row">
+            <b>GalaxyGen</b>
+            <span class="card-dates"><time datetime="2021-06">Jun 2021</time> &mdash; <time datetime="2023-03">Mar 2023</time></span>
+          </div>
+          <p>Built a worldbuilding & mapping tool for star-wars-esque sci-fi galaxies, allowing users to generate and edit graphs representing transit routes across the generated world. Included resource placements with parameters for location and density.</p>
+          
+        </div>
+        <div class="card card-njit">
+          <div class="card-title-row">
+            <b><img class="icon" src="{{ url_for('static', filename='assets/icons/njit.png') }}" alt="" /> ForensicXR</b>
+            <span class="card-dates"><time datetime="2022-03">Mar 2022</time> &mdash; <time datetime="2022-08">Aug 2022</time></span>
+          </div>
+          <p>Worked on a VR educational tool that allows Forensic Science students to explore and investigate digitized recreations of Staged Crime Scenes. ForensicXR was developed in the NJIT MIXR Lab, first as a class project and then a summer research project under the NJIT Provost Undergraduate Summer Research Fellowship until August 2022.</p>
+          
+        </div>
+      </div>
+  </div>
+  
+</section>
+
+<style>
+  
+</style>
+
+<script>
+  // Tiny, dependency-free step scroller
+  (() => {
+    const root = document.querySelector('.rotator');
+    if (!root) return;
+
+    const track = root.querySelector('.rotator__track');
+    const items = Array.from(root.querySelectorAll('.rotator__item'));
+    if (items.length === 0) return;
+
+    const LIGHTNESS = 0.7378;
+    const CHROMA = 0.1828;
+
+    const DURATION_MS = 1800;     // how long each phrase stays visible
+    const SLIDE_MS    = 450;      // slide transition speed
+
+    items.forEach(item => {
+      const hue = Math.floor(Math.random() * 360);
+      const color = `oklch(${LIGHTNESS} ${CHROMA} ${hue})`;
+      item.style.color = color;
+    });
+
+    // Measure one item’s height and lock the container to it
+    const measure = () => {
+      // Use the first item to measure; they all share the same line-height
+      const h = items[0].getBoundingClientRect().height || root.clientHeight;
+      root.style.height = `${h}px`;
+      return h;
+    };
+
+    let itemHeight = measure();
+    window.addEventListener('resize', () => { itemHeight = measure(); });
+
+    // For seamless looping, clone the first item to the end
+    const firstClone = items[0].cloneNode(true);
+    track.appendChild(firstClone);
+
+    let index = 0;       // which item is currently at the top
+    let timer = null;
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const step = () => {
+      if (prefersReduced) {
+        // Reduced motion: instantly swap text without sliding
+        index = (index + 1) % items.length;
+        // Replace visible text content
+        track.style.transform = 'translateY(0)';
+        track.firstElementChild.textContent = items[index].textContent;
+        track.firstElementChild.style.color = items[index].style.color;
+        timer = setTimeout(step, DURATION_MS);
+        return;
+      }
+
+      // Slide to next
+      index++;
+      track.style.transition = `transform ${SLIDE_MS}ms ease-in-out`;
+      track.style.transform = `translateY(${-index * itemHeight}px)`;
+
+      // When we hit the clone (i.e., index === items.length), jump back to 0 without flicker
+      const onEnd = () => {
+        track.removeEventListener('transitionend', onEnd);
+        if (index === items.length) {
+          track.style.transition = 'none';
+          track.style.transform = 'translateY(0)';
+          index = 0;
+        }
+        timer = setTimeout(step, DURATION_MS);
+      };
+      track.addEventListener('transitionend', onEnd, { once: true });
+    };
+
+    // Pause/resume on hover/focus for better UX
+    const pause = () => timer && clearTimeout(timer);
+    const resume = () => { pause(); timer = setTimeout(step, DURATION_MS); };
+    root.addEventListener('mouseenter', pause);
+    root.addEventListener('mouseleave', resume);
+    root.addEventListener('focusin', pause);
+    root.addEventListener('focusout', resume);
+
+    // Start
+    resume();
+  })();
+
+  // Assign staggered fly-in delays so added cards cascade automatically
+  (() => {
+    const columns = document.querySelectorAll('.card-column');
+    if (!columns.length) return;
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
+    const BASE_DELAY_MS = 100;
+    const STAGGER_MS = 150;
+
+    columns.forEach(column => {
+      column.querySelectorAll('.card').forEach((card, index) => {
+        const delay = BASE_DELAY_MS + STAGGER_MS * index;
+        card.style.setProperty('--fly-in-delay', `${delay}ms`);
+      });
+    });
+  })();
+</script>
+
 {% endblock %}

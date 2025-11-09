@@ -1,2 +1,0 @@
-Name,Filename,Date,Desc
-Discord Role Color Selection,Discord_Role_Colors,5/19/2024,"I spent a good bit of time messing with color theory and color spaces trying to figure out how to programmatically find contrasting colors for Discord roles. As it turns out, it gets complicated really quickly."
