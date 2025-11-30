@@ -1,0 +1,103 @@
+.tools-shell {
+    width: min(900px, 92vw);
+    margin: 2rem auto 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    color: #f5f7fb;
+}
+
+.tools-hero h1 {
+    margin: 0 0 0.25rem;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 0.3rem;
+}
+
+.lede {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.82);
+    max-width: 720px;
+}
+
+.tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+}
+
+.tool-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tool-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.tool-card h2 {
+    margin: 0 0 4px;
+}
+
+.tool-desc {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.5;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    color: #f5f7fb;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.tool-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #3acdd2, #5ef3c9);
+    color: #041116;
+    text-decoration: none;
+    font-weight: 700;
+    border: none;
+    box-shadow: 0 8px 24px rgba(62, 221, 210, 0.35);
+}
+.btn:visited {
+    color: #041116;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}

@@ -1,0 +1,532 @@
+{% extends "base.html" %}
+
+{% block site_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/zoom_attendance.css') }}">
+{% endblock %}
+
+{% block title %}
+Zoom Attendance
+{% endblock %}
+
+{% block body %}
+<section class="tool-shell">
+    <div class="panel intro">
+        <p class="eyebrow">Tool</p>
+        <div class="intro-row">
+            <div>
+                <h1>Zoom Attendance Builder</h1>
+                <p class="lede">Upload Zoom participant exports (CSV/XLSX, multi-sheet friendly). Preview the attendance matrix, tune per-day minimum minutes, and export the cleaned workbook.</p>
+            </div>
+            <div class="pill pill-outline">Multi-sheet ready</div>
+        </div>
+    </div>
+
+    <div class="panel form-panel">
+        <div class="form-grid">
+            <label class="file-drop" for="file-input">
+                <div>
+                    <strong>Upload participant sheets</strong>
+                    <span>Drag in multiple files or a single workbook with multiple sheets (.csv, .xls, .xlsx).</span>
+                </div>
+                <input id="file-input" name="files" type="file" accept=".csv,.xls,.xlsx" multiple>
+            </label>
+            <div class="file-list" id="file-list"></div>
+            <div class="progress-wrap" id="progress-wrap" hidden>
+                <div class="progress-label" id="progress-label"></div>
+                <div class="progress-bar"><span id="progress-bar"></span></div>
+            </div>
+            <div class="actions">
+                <button type="button" id="preview-btn" class="primary-btn">Build preview</button>
+                <button type="button" id="export-btn" class="ghost-btn" disabled>Export Excel</button>
+            </div>
+        </div>
+        <p id="status-text" class="status-line">Load Zoom exports to get started.</p>
+    </div>
+
+    <div class="panel table-panel" id="table-panel" hidden>
+        <div class="panel-head">
+            <div>
+                <p class="eyebrow">Preview</p>
+                <h2>Attendance matrix</h2>
+            </div>
+            <div class="preview-metrics">
+                <span id="pass-rate" class="pill pill-outline muted"></span>
+                <span id="row-count" class="pill pill-outline muted"></span>
+            </div>
+        </div>
+        <div class="table-scroll">
+            <table id="attendance-table">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<script>
+(() => {
+  const state = {
+    files: [],
+    dayColumns: [], // [{ key, label, source, file, sheet, sessionTotal }]
+    thresholds: {}, // keyed by display label
+    defaultThresholds: {},
+    rows: [],
+    percentile: null,
+  };
+
+  const fileInput = document.getElementById('file-input');
+  const fileList = document.getElementById('file-list');
+  const previewBtn = document.getElementById('preview-btn');
+  const exportBtn = document.getElementById('export-btn');
+  const statusText = document.getElementById('status-text');
+  const tablePanel = document.getElementById('table-panel');
+  const tableHead = document.querySelector('#attendance-table thead');
+  const tableBody = document.querySelector('#attendance-table tbody');
+  const rowCount = document.getElementById('row-count');
+  const passRate = document.getElementById('pass-rate');
+  const progressWrap = document.getElementById('progress-wrap');
+  const progressBar = document.getElementById('progress-bar');
+  const progressLabel = document.getElementById('progress-label');
+
+  const setStatus = (message, tone = 'info') => {
+    statusText.textContent = message;
+    statusText.className = `status-line status-${tone}`;
+  };
+
+  function setProgress(pct, label) {
+    if (typeof pct === 'number') {
+      progressWrap.hidden = false;
+      progressBar.style.width = `${Math.min(100, Math.max(0, Math.round(pct * 100)))}%`;
+    }
+    if (label) progressLabel.textContent = label;
+  }
+
+  function hideProgress() {
+    progressBar.style.width = '0%';
+    progressLabel.textContent = '';
+    progressWrap.hidden = true;
+  }
+
+  const makeId = () => (crypto.randomUUID ? crypto.randomUUID() : `id-${Date.now()}-${Math.random().toString(16).slice(2)}`);
+
+  const deriveDayFromName = (name) => {
+    const base = name.replace(/\.[^/.]+$/, '');
+    const match = base.match(/(20\d{2})[_-](\d{1,2})[_-](\d{1,2})/);
+    if (match) {
+      const [_, y, m, d] = match;
+      const mm = String(Number(m)).padStart(2, '0');
+      const dd = String(Number(d)).padStart(2, '0');
+      return `${y}-${mm}-${dd}`;
+    }
+    return base;
+  };
+
+  const resetPreview = () => {
+    state.dayColumns = [];
+    state.thresholds = {};
+    state.defaultThresholds = {};
+    state.rows = [];
+    tablePanel.hidden = true;
+    exportBtn.disabled = true;
+    hideProgress();
+  };
+
+  const formatMinutes = (value) => {
+    if (value === null || value === undefined || Number.isNaN(Number(value))) return '--';
+    const num = Number(value);
+    const rounded = Math.round(num * 10) / 10;
+    return `${rounded % 1 === 0 ? rounded.toFixed(0) : rounded.toFixed(1)} min`;
+  };
+
+  const getThreshold = (label) => {
+    const val = Number(state.thresholds?.[label] ?? 0);
+    return Number.isFinite(val) && val >= 0 ? val : 0;
+  };
+
+  const computePass = (row) => {
+    return state.dayColumns.every((day) => {
+      const minutes = Number(row[day.label] ?? 0);
+      const threshold = getThreshold(day.label);
+      return minutes >= threshold;
+    });
+  };
+
+  const renderPassRate = () => {
+    if (!state.rows.length) {
+      passRate.textContent = '';
+      return;
+    }
+    const passCount = state.rows.reduce((acc, row) => acc + (computePass(row) ? 1 : 0), 0);
+    const pct = Math.round((passCount / state.rows.length) * 100);
+    passRate.textContent = `Pass rate: ${pct}%`;
+  };
+
+  const renderTable = () => {
+    if (!state.rows.length) {
+      tablePanel.hidden = true;
+      return;
+    }
+
+    tablePanel.hidden = false;
+    const total = state.rows.length;
+    rowCount.textContent = `${total} attendee${total === 1 ? '' : 's'}`;
+    renderPassRate();
+
+    const headerCells = [
+      '<th scope="col">Email</th>',
+      ...state.dayColumns.map((day) => {
+        const thr = getThreshold(day.label);
+        return `<th scope="col"><div class="th-label">${day.label}</div><div class="th-sub">>= ${formatMinutes(thr)}</div></th>`;
+      }),
+      '<th scope="col" class="center">Met thresholds</th>',
+    ];
+    tableHead.innerHTML = `<tr>${headerCells.join('')}</tr>`;
+
+    const bodyRows = state.rows.map((row) => {
+      const meets = computePass(row);
+      const cells = [
+        `<td class="email-cell">${row.Email}</td>`,
+        ...state.dayColumns.map((day) => `<td class="numeric">${formatMinutes(row[day.label])}</td>`),
+        `<td class="center"><span class="pill ${meets ? 'pill-ok' : 'pill-warn'}">${meets ? 'Yes' : 'No'}</span></td>`,
+      ];
+      return `<tr>${cells.join('')}</tr>`;
+    }).join('');
+
+    tableBody.innerHTML = bodyRows || `<tr><td colspan="${headerCells.length}" class="muted">No attendees parsed.</td></tr>`;
+  };
+
+  const ensureUniqueLabel = (proposed, excludeIndex = -1) => {
+    if (!proposed) return null;
+    let candidate = proposed.trim();
+    let i = 2;
+    const exists = (name) => state.dayColumns.some((d, idx) => idx !== excludeIndex && d.label === name);
+    while (exists(candidate)) {
+      candidate = `${proposed} (${i})`;
+      i += 1;
+    }
+    return candidate;
+  };
+
+  const applyLabelChange = (index, newLabelRaw) => {
+    const day = state.dayColumns[index];
+    if (!day) return;
+    const unique = ensureUniqueLabel(newLabelRaw, index);
+    if (!unique || unique === day.label) return;
+
+    const oldLabel = day.label;
+    day.label = unique;
+
+    if (oldLabel in state.thresholds) {
+      state.thresholds[unique] = state.thresholds[oldLabel];
+      delete state.thresholds[oldLabel];
+    }
+    if (oldLabel in state.defaultThresholds) {
+      state.defaultThresholds[unique] = state.defaultThresholds[oldLabel];
+      delete state.defaultThresholds[oldLabel];
+    }
+    state.rows = state.rows.map((row) => {
+      if (Object.prototype.hasOwnProperty.call(row, oldLabel)) {
+        row[unique] = row[oldLabel];
+        delete row[oldLabel];
+      }
+      return row;
+    });
+
+    renderTable();
+    renderFileList();
+  };
+
+  const renderFileList = () => {
+    if (!state.files.length) {
+      fileList.innerHTML = '<p class="file-note">No files added yet.</p>';
+      return;
+    }
+    fileList.innerHTML = '';
+    const resolveDaysForFile = (fileName, dayLabelGuess) => {
+      if (!state.dayColumns.length) return [];
+      const labelGuess = (dayLabelGuess || '').trim();
+      return state.dayColumns
+        .map((day, idx) => ({ ...day, idx }))
+        .filter((d) => {
+          if (!fileName && !labelGuess) return false;
+          const matchesFile = d.file && d.file === fileName;
+          const matchesSource = (() => {
+            if (d.source && typeof d.source === 'string') return d.source.startsWith(fileName);
+            if (d.source && typeof d.source === 'object' && d.source.file) return d.source.file === fileName;
+            return false;
+          })();
+          const matchesLabel = labelGuess
+            && (d.label === labelGuess
+              || d.key === labelGuess
+              || d.label.startsWith(`${labelGuess} `)
+              || (typeof d.key === 'string' && d.key.startsWith(`${labelGuess} `)));
+          return matchesFile || matchesSource || matchesLabel;
+        });
+    };
+
+    state.files.forEach((item) => {
+      const dayRows = resolveDaysForFile(item.file.name, item.dayLabel || item.dayDefault);
+      const firstSession = dayRows.find((d) => Number.isFinite(Number(d.sessionTotal)));
+      const sessionLine = firstSession
+        ? `Session length: ${formatMinutes(firstSession.sessionTotal)}${dayRows.length > 1 ? ` (+${dayRows.length - 1} more)` : ''}`
+        : '';
+
+      const dayHtml = dayRows.length
+        ? `<div class="day-sublist">
+            ${dayRows.map((d) => {
+              const thr = getThreshold(d.label);
+              const hasSession = Number.isFinite(Number(d.sessionTotal));
+              const sessionText = hasSession
+                ? `Session: ${formatMinutes(d.sessionTotal)}`
+                : 'Session length unknown';
+              const sheetText = d.sheet ? ` | Sheet: ${d.sheet}` : '';
+              return `
+                <div class="day-row">
+                  <div class="day-line">
+                    <input type="text" value="${d.label}" data-day-index="${d.idx}" aria-label="Day label for ${d.label}">
+                    <label class="threshold-inline">
+                      <span>Threshold (min)</span>
+                      <input type="number" step="1" min="0" value="${Number.isFinite(thr) ? thr : 0}" data-day-index="${d.idx}">
+                    </label>
+                  </div>
+                  <span class="file-note">${sessionText}${sheetText}</span>
+                </div>
+              `;
+            }).join('')}
+          </div>`
+        : '';
+
+      const row = document.createElement('div');
+      row.className = 'file-row';
+      row.innerHTML = `
+        <div class="file-meta">
+          <span class="file-name">${item.file.name}</span>
+          <span class="file-note">Default day: ${item.dayDefault}</span>
+          ${sessionLine ? `<span class="file-note">${sessionLine}</span>` : ''}
+          <span class="file-status">${item.status || 'Queued'}</span>
+        </div>
+        <div class="file-actions">
+          ${dayRows.length ? '' : `<input type="text" value="${item.dayLabel}" data-id="${item.id}" aria-label="Day label for ${item.file.name}">`}
+          <button type="button" data-remove="${item.id}">Remove</button>
+        </div>
+        ${dayHtml}
+      `;
+      row.querySelector('input[data-id]')?.addEventListener('change', (e) => {
+        item.dayLabel = e.target.value || item.dayDefault;
+      });
+      row.querySelector('button')?.addEventListener('click', () => {
+        state.files = state.files.filter((f) => f.id !== item.id);
+        resetPreview();
+        renderFileList();
+        setStatus('File removed. Rebuild preview to refresh results.', 'info');
+      });
+      row.querySelectorAll('input[data-day-index]').forEach((input) => {
+        if (input.type === 'number') {
+          input.addEventListener('input', (event) => {
+            const idx = Number(input.getAttribute('data-day-index'));
+            const day = state.dayColumns[idx];
+            const val = parseFloat(event.target.value);
+            if (day) {
+              state.thresholds[day.label] = Number.isFinite(val) && val >= 0 ? val : 0;
+              renderTable();
+            }
+          });
+        } else {
+          input.addEventListener('change', (event) => {
+            const idx = Number(input.getAttribute('data-day-index'));
+            applyLabelChange(idx, event.target.value);
+          });
+        }
+      });
+      fileList.appendChild(row);
+    });
+  };
+
+  const addFiles = (files) => {
+    const newOnes = Array.from(files || []);
+    if (!newOnes.length) return;
+    newOnes.forEach((file) => {
+      const signature = `${file.name}-${file.size}-${file.lastModified}`;
+      const exists = state.files.some((f) => f.signature === signature);
+      if (exists) return;
+      const defaultLabel = deriveDayFromName(file.name);
+      state.files.push({
+        id: makeId(),
+        signature,
+        file,
+        dayDefault: defaultLabel,
+        dayLabel: defaultLabel,
+        status: 'Queued',
+      });
+    });
+    resetPreview();
+    renderFileList();
+    setStatus('Files added. Build a preview to process.', 'info');
+  };
+
+  const buildDayLabelOverrides = () => {
+    const map = {};
+    // From files (pre-parse hints)
+    state.files.forEach((f) => {
+      if (f.dayLabel && f.dayLabel !== f.dayDefault) {
+        map[f.dayDefault] = f.dayLabel;
+      }
+    });
+    // From explicit per-day edits after parsing
+    state.dayColumns.forEach((d) => {
+      if (d.label && d.label !== d.key) {
+        map[d.key] = d.label;
+      }
+    });
+    return map;
+  };
+
+  const buildFormData = () => {
+    if (!state.files.length) {
+      setStatus('Please add at least one CSV or XLSX.', 'error');
+      return null;
+    }
+    const formData = new FormData();
+    state.files.forEach((item) => formData.append('files', item.file, item.file.name));
+    const labelMap = buildDayLabelOverrides();
+    if (Object.keys(labelMap).length) {
+      formData.append('day_labels', JSON.stringify(labelMap));
+    }
+    return formData;
+  };
+
+  const markFilesStatus = (status) => {
+    state.files = state.files.map((f) => ({ ...f, status }));
+    renderFileList();
+  };
+
+  const sendWithProgress = (url, formData, responseType = 'json') => {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', url);
+      xhr.responseType = responseType;
+      xhr.upload.onprogress = (evt) => {
+        if (evt.lengthComputable) {
+          setProgress(evt.loaded / evt.total, 'Uploading...');
+        }
+      };
+      xhr.onload = () => {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          resolve(xhr.response);
+        } else {
+          reject({ status: xhr.status, response: xhr.response });
+        }
+      };
+      xhr.onerror = () => reject({ status: xhr.status, response: xhr.response });
+      xhr.send(formData);
+    });
+  };
+
+  const handlePreview = async () => {
+    const formData = buildFormData();
+    if (!formData) return;
+
+    setStatus('Processing uploads...', 'info');
+    setProgress(0, 'Starting...');
+    previewBtn.disabled = true;
+    exportBtn.disabled = true;
+    markFilesStatus('Uploading');
+
+    try {
+      const payload = await sendWithProgress('/tools/zoom_attendance/parse', formData, 'json');
+      if (payload?.error) throw new Error(payload.error);
+
+      const rawDayCols = payload.raw_day_columns || payload.day_columns || [];
+      const meta = Array.isArray(payload.day_meta) ? payload.day_meta : [];
+      if (meta.length) {
+        state.dayColumns = meta.map((m, idx) => ({
+          key: m.raw_label || rawDayCols[idx] || m.label,
+          label: m.label,
+          source: m.source,
+          file: m.file,
+          sheet: m.sheet,
+          sessionTotal: m.session_total,
+        }));
+      } else {
+        state.dayColumns = (payload.day_columns || []).map((label, idx) => ({
+          key: rawDayCols[idx] || label,
+          label,
+          sessionTotal: (payload.session_totals || {})[label],
+        }));
+      }
+      state.thresholds = { ...(payload.thresholds || {}) };
+      state.defaultThresholds = { ...(payload.thresholds || {}) };
+      state.rows = payload.rows || [];
+      state.percentile = payload.percentile;
+      markFilesStatus('Ready');
+
+      renderFileList();
+      renderTable();
+      exportBtn.disabled = !state.rows.length;
+
+      if (!state.rows.length) {
+        setStatus('No attendees were found in the uploaded files.', 'error');
+      } else {
+        setStatus('Preview ready. Adjust thresholds before exporting.', 'ok');
+      }
+    } catch (err) {
+      const message = err?.response?.error || err?.message || 'Unable to parse files.';
+      setStatus(message, 'error');
+      tablePanel.hidden = true;
+      markFilesStatus('Error');
+    } finally {
+      previewBtn.disabled = false;
+      hideProgress();
+    }
+  };
+
+  const handleExport = async () => {
+    if (!state.dayColumns.length) {
+      setStatus('Build a preview before exporting.', 'error');
+      return;
+    }
+
+    const formData = buildFormData();
+    if (!formData) return;
+    formData.append('thresholds', JSON.stringify(state.thresholds));
+
+    setStatus('Building Excel file...', 'info');
+    setProgress(0, 'Starting export...');
+    exportBtn.disabled = true;
+    markFilesStatus('Uploading');
+
+    try {
+      const blob = await sendWithProgress('/tools/zoom_attendance/export', formData, 'blob');
+      if (blob instanceof Blob === false) throw new Error('Export failed.');
+
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'attendance_summary.xlsx';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      setStatus('Export ready. File downloaded.', 'ok');
+      markFilesStatus('Ready');
+    } catch (err) {
+      const message = err?.response?.error || err?.message || 'Export failed.';
+      setStatus(message, 'error');
+      markFilesStatus('Error');
+    } finally {
+      exportBtn.disabled = false;
+      hideProgress();
+    }
+  };
+
+  fileInput?.addEventListener('change', (event) => {
+    addFiles(event.target.files);
+    fileInput.value = '';
+  });
+  previewBtn?.addEventListener('click', handlePreview);
+  exportBtn?.addEventListener('click', handleExport);
+
+  renderFileList();
+})();
+</script>
+{% endblock %}

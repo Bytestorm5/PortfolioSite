@@ -11,14 +11,15 @@
     </head>
     <body>
         <div class="site-header">
-            <a href="\"><p>Home</p></a>
+            <a href="{{ url_for('index') }}"><p>Home</p></a>
+            <a href="{{ url_for('tools_index') }}"><p>Tools</p></a>
             <a href="https://kamilarif.substack.com/"><p>Blog</p></a>
         </div>
         <div class="site-body">
             {% block body %}{% endblock %}
         </div>
         <div class="site-footer">
-            Last Updated: 11/9/2025
+            Last Updated: 11/29/2025
         </div>        
     </body>
 </html>

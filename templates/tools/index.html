@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block site_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tools.css') }}">
+{% endblock %}
+
+{% block title %}
+Tools
+{% endblock %}
+
+{% block body %}
+<section class="tools-shell">
+  <div class="tools-hero">
+    <p class="eyebrow">Utilities</p>
+    <h1>Tools</h1>
+    <p class="lede">A small but growing set of helpers built for workshops, cohorts, and experiments.</p>
+  </div>
+
+  <div class="tool-grid">
+    {% for tool in tools %}
+    <article class="tool-card">
+      <div class="tool-card-head">
+        <div>
+          <h2>{{ tool.name }}</h2>
+          <p class="tool-desc">{{ tool.description }}</p>
+        </div>
+        {% if tool.pill %}<span class="pill">{{ tool.pill }}</span>{% endif %}
+      </div>
+      <div class="tool-actions">
+        <a class="btn" href="{{ tool.href }}">Open tool</a>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
