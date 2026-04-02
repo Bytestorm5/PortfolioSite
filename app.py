@@ -62,7 +62,7 @@ def _parse_day_labels(raw: str | None) -> dict[str, str]:
         raise ValueError("day_labels must be a JSON object.")
     return {str(k): str(v) for k, v in data.items()}
 
-#
+
 @app.route('/')
 def index():
     return render_template('index.html')
